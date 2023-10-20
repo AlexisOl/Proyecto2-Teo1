@@ -30,7 +30,7 @@ CREATE TABLE cliente(
 
 CREATE TABLE area(
     idArea INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(75) NOT NULL,
+    nombre VARCHAR(80) NOT NULL,
     estado BOOLEAN NOT NULL,
     capacidad INT NOT NULL,
     PRIMARY KEY(idArea)
