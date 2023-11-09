@@ -9,7 +9,7 @@ class conexion {
    // SOLO CAMBIAR EN BASE A SUS CREDENCIALES  ----------------
    //--------------------------
    private $username = 'adminstracionParque';
-   private $password = 'Teori@sistemas1';
+   private $password = 'TuContrasenaSegura';
 
    private $conexion;
 
@@ -46,11 +46,17 @@ class conexion {
 
 
     //noticias
-    public function muestraNoticias($tabla){
+    public function verClientes($tabla){
         $sql = "SELECT * FROM " . $tabla . ";";
         $generarAccion = $this->conexion->query($sql);
         return $generarAccion->fetchAll();
-    
+    }
+
+    public function verClienteNit($tabla, $nit) {
+        $sql = "SELECT * FROM" . $tabla . " WHERE nit = ".$nit .";";
+        $peticion = $this->conexion->query($sql);
+        return $peticion->fetchAll();
+
     }
 
    

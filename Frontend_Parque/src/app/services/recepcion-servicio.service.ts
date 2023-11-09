@@ -9,14 +9,19 @@ import { usuarios } from '../models/usuarios';
 export class RecepcionServicioService {
 
 
-  readonly URL ="http://localhost:8080/api/";
+  // GENERO LA URL DEL LOCALHOST
+  readonly URL ="http://localhost/Backend_Parque/controladores/recepcion.php";
 
   constructor(private http: HttpClient) { }
 
 
   //funcion para ver a los usuarios SOLO PRUEBA
 
-  verUsuarios():Observable<usuarios> {
-    return this.http.get<usuarios>(this.URL+"verUsuarios");
+  verUsuarios():Observable<any> {
+    return this.http.get<any>(this.URL+"?action=getColaboradores");
+  }
+
+  buscarClienteNit(nit:string):Observable<any> {
+    return this.http.get<any>(this.URL+"?action=getClienteNit&datos="+nit);
   }
 }
