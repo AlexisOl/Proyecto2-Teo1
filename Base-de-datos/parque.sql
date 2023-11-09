@@ -120,3 +120,33 @@ ALTER TABLE venta
 ALTER TABLE venta
   ADD CONSTRAINT `fk_ID_AREA_VENTA` FOREIGN KEY (`idArea`) REFERENCES `area` (`idArea`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_ID_FACTURA_VENTA` FOREIGN KEY (`idFactura`) REFERENCES `factura` (`idFactura`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+CREATE TABLE empleadoFactura(
+    idEmpleadoFactura INT NOT NULL AUTO_INCREMENT,
+    idEmpleado INT NOT NULL,   
+    idFactura INT NOT NULL,
+    PRIMARY KEY(idEmpleadoFactura)
+);
+
+ALTER TABLE empleadoFactura
+    ADD KEY `fk_ID_EMPLEADO_F` (`idEmpleado`),
+    ADD KEY `fk_ID_FACTURA_F` (`idFactura`);
+
+ALTER TABLE empleadoFactura
+  ADD CONSTRAINT `fk_ID_FACTURA_EMPLEADO` FOREIGN KEY (`idEmpleado`) REFERENCES `empleado` (`idEmpleado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_ID_FACTURA_FACTURA` FOREIGN KEY (`idFactura`) REFERENCES `factura` (`idFactura`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+CREATE TABLE comentario(
+    idComentario INT NOT NULL AUTO_INCREMENT,
+    idFactura INT NOT NULL,
+    mensaje TEXT NOT NULL,
+    fecha DATE NOT NULL,
+    PRIMARY KEY(idComentario)
+);
+
+
+ALTER TABLE comentario
+    ADD KEY `fk_ID_FACTURA_COMENT` (`idFactura`);
+
+ALTER TABLE comentario
+  ADD CONSTRAINT `fk_ID_FACTURA_COMENTARIO` FOREIGN KEY (`idFactura`) REFERENCES `factura` (`idFactura`) ON DELETE NO ACTION ON UPDATE NO ACTION;
