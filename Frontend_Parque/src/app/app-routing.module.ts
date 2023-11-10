@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VistaInicialComponent } from './vistaGeneral/vista-inicial/vista-inicial.component';
 import { LoginComponent } from './vistaGeneral/login/login.component';
+import { FinanzasGuard } from './services/login/guard/finanzas.guard';
+import { AdminGuard } from './services/login/guard/admin.guard';
+import { RecepcionGuard } from './services/login/guard/recepcion.guard';
+
 
 const routes: Routes = [
 
@@ -11,7 +15,7 @@ const routes: Routes = [
 
   // path para lo de rececpion
   {path: 'generalRecepcion',
-  loadChildren: () => import('./vistasRecepcion/recepcion-modulo/recepcion-modulo.module').then(m => m.RecepcionModuloModule) }
+  loadChildren: () => import('./vistasRecepcion/recepcion-modulo/recepcion-modulo.module').then(m => m.RecepcionModuloModule), canActivate: [FinanzasGuard] }
 
 ];
 

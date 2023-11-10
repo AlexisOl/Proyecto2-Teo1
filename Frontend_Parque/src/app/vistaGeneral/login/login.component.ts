@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login/login.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,6 +14,10 @@ export class LoginComponent {
     usuario: '',
     contrasenia: '',
   };
+
+  constructor(private loginService: LoginService,private router:Router) {
+    
+  }
 
   public login(){
     
@@ -27,7 +33,44 @@ export class LoginComponent {
   }
 
   public iniciarSesion(){
-    alert("Ingresar");
+    this.loginService.login(this.loginData).subscribe((data:any)=>{
+      if(data==''){
+      
+        Swal.fire({
+          icon: 'warning',
+          title: 'Credenciales incorrectas',
+          confirmButtonText: 'Continuar'
+        });
+
+      }else{
+
+       // this.loginService.sesion(data);
+
+        if (this.loginService.getUsuario()!=null) {
+
+          switch (this.loginService.getRol()) {
+            //admin general
+            case 1:
+              this.router.navigate(['adminstrador']);
+              this.loginService.loginStatusSubject.next(true);
+              break;
+            //finanzas
+            case 2:
+              this.router.navigate(['generalRecepcion']);
+              this.loginService.loginStatusSubject.next(true);
+              break;
+            //recepcionista
+            case 3:
+              this.router.navigate(['recepcionista']);
+              this.loginService.loginStatusSubject.next(true);
+              break;
+          }
+        }
+        
+
+      }
+
+    });
   }
 
 }
