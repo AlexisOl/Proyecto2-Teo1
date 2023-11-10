@@ -8,8 +8,8 @@ class conexion {
    //--------------------------
    // SOLO CAMBIAR EN BASE A SUS CREDENCIALES  ----------------
    //--------------------------
-   private $username = 'adminstracionParque';
-   private $password = 'TuContrasenaSegura';
+   private $username = 'administracionParque';
+   private $password = 'Teori@sistemas1';
 
    private $conexion;
 

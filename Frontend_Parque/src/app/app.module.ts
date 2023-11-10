@@ -22,7 +22,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ReservacionesEmpleadosComponent } from './vistasRecepcion/reservaciones-empleados/reservaciones-empleados.component';
-import { VistasAdministradorComponent } from './vistas-administrador/vistas-administrador.component';
 import { HeaderAdministradorComponent } from './vistasAdministrador/header-administrador/header-administrador.component';
 import { AreasComponent } from './vistasAdministrador/areas/areas.component';
 import { EmpleadosComponent } from './vistasAdministrador/empleados/empleados.component';
@@ -38,7 +37,6 @@ import { EmpleadosComponent } from './vistasAdministrador/empleados/empleados.co
     HeaderRecepcionComponent,
     AlquilerEmpleadoComponent,
     ReservacionesEmpleadosComponent,
-    VistasAdministradorComponent,
     HeaderAdministradorComponent,
     AreasComponent,
     EmpleadosComponent
