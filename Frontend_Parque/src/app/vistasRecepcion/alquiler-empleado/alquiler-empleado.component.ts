@@ -21,21 +21,17 @@ export class AlquilerEmpleadoComponent implements OnInit {
   isLinear = false;
 
   constructor(private _formBuilder: FormBuilder,
-              private empleadoServicio: RecepcionServicioService) {}
+              private empleadoServicio: RecepcionServicioService,
+              private http: HttpClient) {}
 
 
-              verPorNit() {
-                console.log(this.nit);
-
-                this.empleadoServicio.buscarClienteNit(this.nit).subscribe(
-                  (elemento: any) => {
-                    console.log(elemento);
-                  },
-                  (error: any) => {
-                    console.error(error);
-                  }
-                );
-              }
+  verPorNit() {
+    this.empleadoServicio.obtenerClientePorNit(String(this.nit)).subscribe(
+      vercliente => {
+        console.log(vercliente);
+      }
+    ) ;
+  }
 
 
   ngOnInit(): void {

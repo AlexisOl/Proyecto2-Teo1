@@ -22,6 +22,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ReservacionesEmpleadosComponent } from './vistasRecepcion/reservaciones-empleados/reservaciones-empleados.component';
+import { ClienteIngresoComponent } from './vistasRecepcion/cliente-ingreso/cliente-ingreso.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ReservacionesEmpleadosComponent } from './vistasRecepcion/reservaciones
     PaginaPrincipalComponent,
     HeaderRecepcionComponent,
     AlquilerEmpleadoComponent,
-    ReservacionesEmpleadosComponent
+    ReservacionesEmpleadosComponent,
+    ClienteIngresoComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { ReservacionesEmpleadosComponent } from './vistasRecepcion/reservaciones
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
-
+    MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
