@@ -35,8 +35,7 @@ CREATE TABLE cliente(
     nombre VARCHAR(75) NOT NULL,
     estadoSuscripcion BOOLEAN NOT NULL,
     fechaInicioPago DATE NOT NULL,
-    tipoCliente VARCHAR(2) NOT NULL,
-    ubicacion VARCHAR(75) NOT NULL,
+    direccion VARCHAR(80) NOT NULL,
     PRIMARY KEY(idCliente)
 );
 
@@ -44,6 +43,7 @@ CREATE TABLE area(
     idArea INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(80) NOT NULL UNIQUE,
     precio DECIMAL(9,2) NOT NULL,
+    descripcion TEXT NOT NULL,
     estado BOOLEAN NOT NULL,
     capacidad INT NOT NULL,
     horaInicio TIME NOT NULL,
@@ -150,3 +150,36 @@ ALTER TABLE comentario
 
 ALTER TABLE comentario
   ADD CONSTRAINT `fk_ID_FACTURA_COMENTARIO` FOREIGN KEY (`idFactura`) REFERENCES `factura` (`idFactura`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- INSERTANDO REGISTROS
+
+INSERT INTO rol(nombre) values 
+('Administrador'),
+('Finanzas'),
+('Recepcionista')
+;
+
+INSERT INTO empleado(nombre,usuario,rol,contrasenia) values 
+('Jose Lopez','jlopez',1,'123'),
+('Luisa Loarca','lloarca',1,'123'),
+('Eduardo Pozuelo','jpoz',2,'123'),
+('Marta Diaz','mdiaz',2,'123'),
+('Rocio Castañeda','rcast',3,'123'),
+('Marvin Villatoro','mvilla',3,'123');
+
+INSERT INTO cliente(nit, nombre, estadoSuscripcion, fechaInicioPago, direccion) values
+('459874564','Marcelo Bravo',TRUE,'2023-11-09','Quetzaltenango'),
+('425987458','Ivan Villa',TRUE,'2023-11-09','Salcaja'),
+('536987421','Marta Valenzuela',FALSE,'2023-11-09','La esperanza'),
+('485963158','Riquelme Arraya',TRUE,'2023-11-09','Quetzaltenango'),
+('103698026','Maria Castillo',TRUE,'2023-11-09','Quetzaltenango'),
+('503698745','David Quiroa',FALSE,'2023-11-09','Huehuetenango'),
+('100236984','Enda Ortiz',TRUE,'2023-11-09','Guatemala');
+
+INSERT INTO area(nombre, precio, estado, capacidad, horaInicio, horaFin, descripcion) values
+('Rincón Bohemio',3500,TRUE,150,'8:00:00','21:00:00','Salon para eventos especiales La elegancia se encuentra en cada detalle, desde la iluminación ambiental hasta la disposición de los muebles. Creamos un ambiente sofisticado que se adapta a la ocasión y resalta la belleza de cada evento.'),
+('Gala Brillante',3500,TRUE,150,'8:00:00','21:00:00','Equipado con las últimas tecnologías audiovisuales, nuestro salón es el escenario perfecto para presentaciones impactantes y experiencias multimedia inolvidables.'),
+('Salón del Encanto',3500,TRUE,150,'8:00:00','21:00:00','La elegancia se encuentra en cada detalle, desde la iluminación ambiental hasta la disposición de los muebles. Creamos un ambiente sofisticado que se adapta a la ocasión y resalta la belleza de cada evento.'),
+('La Cúpula',3500,TRUE,150,'8:00:00','21:00:00',' Nuestro salón ha sido meticulosamente diseñado para proporcionar un ambiente único y versátil. Ya sea una boda íntima, una celebración corporativa o cualquier ocasión especial, aquí encontrarás el espacio perfecto.'),
+('De los altos',3500,TRUE,150,'8:00:00','21:00:00','Desde la primera consulta hasta el último brindis, nuestro equipo experimentado estará a tu disposición para asegurar que cada detalle refleje tu visión. Nos enorgullece ofrecer un enfoque personalizado y flexible para satisfacer todas tus necesidades.'),
+('Sashimi',3500,TRUE,150,'8:00:00','21:00:00','Desde la entrada hasta cada rincón del salón, nuestra arquitectura refleja la simplicidad y la serenidad del diseño japonés. La decoración minimalista y los elementos naturales crean un ambiente zen que eleva la experiencia de cualquier evento.');

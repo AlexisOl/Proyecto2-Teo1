@@ -4,10 +4,6 @@
 class conexion {
    private $host = 'localhost';
    private $dbname = 'parque';
-
-   //--------------------------
-   // SOLO CAMBIAR EN BASE A SUS CREDENCIALES  ----------------
-   //--------------------------
    private $username = 'administracionParque';
    private $password = 'Teori@sistemas1';
 
