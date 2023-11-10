@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PaginaPrincipalComponent } from '../pagina-principal/pagina-principal.component';
 import { AlquilerEmpleadoComponent } from '../alquiler-empleado/alquiler-empleado.component';
 import { ReservacionesEmpleadosComponent } from '../reservaciones-empleados/reservaciones-empleados.component';
+import { ClienteIngresoComponent } from '../cliente-ingreso/cliente-ingreso.component';
 
 const routes:Routes = [
   {path: '',
@@ -14,6 +15,9 @@ const routes:Routes = [
   },
   {path: 'reservaciones',
   component:ReservacionesEmpleadosComponent,
+  },
+  {path: 'crearCliente',
+  component:ClienteIngresoComponent,
   }
 ]
 

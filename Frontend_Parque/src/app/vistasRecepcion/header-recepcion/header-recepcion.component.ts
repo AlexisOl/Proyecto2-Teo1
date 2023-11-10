@@ -20,4 +20,8 @@ export class HeaderRecepcionComponent {
   irReservacion() {
     this.rutas.navigate(['./generalRecepcion/reservaciones']);
   }
+  irCrearCliente() {
+    this.rutas.navigate(['./generalRecepcion/crearCliente']);
+  }
+
 }
