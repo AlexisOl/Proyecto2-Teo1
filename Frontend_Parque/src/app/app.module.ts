@@ -24,6 +24,14 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { ReservacionesEmpleadosComponent } from './vistasRecepcion/reservaciones-empleados/reservaciones-empleados.component';
 import { ClienteIngresoComponent } from './vistasRecepcion/cliente-ingreso/cliente-ingreso.component';
 import { MatCardModule } from '@angular/material/card';
+import { PaginaPrincipalAdminstradorComponent } from './vistasAdministrador/pagina-principal-adminstrador/pagina-principal-adminstrador.component';
+import { ClientesComponent } from './vistasAdministrador/clientes/clientes.component';
+import { ComentariosComponent } from './vistasAdministrador/comentarios/comentarios.component';
+import { EmpleadosComponent } from './vistasAdministrador/empleados/empleados.component';
+import { AreasComponent } from './vistasAdministrador/areas/areas.component';
+import { HeaderAdminComponent } from './vistasAdministrador/header-admin/header-admin.component';
+
+
 
 @NgModule({
   declarations: [
@@ -37,6 +45,12 @@ import { MatCardModule } from '@angular/material/card';
     AlquilerEmpleadoComponent,
     ReservacionesEmpleadosComponent,
     ClienteIngresoComponent,
+    PaginaPrincipalAdminstradorComponent,
+    ClientesComponent,
+    ComentariosComponent,
+    EmpleadosComponent,
+    AreasComponent,
+    HeaderAdminComponent
   ],
   imports: [
     BrowserModule,

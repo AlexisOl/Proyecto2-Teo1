@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+
+    <button  mat-button
+    (click)="irAreas()"
+    >
+      <span>Areas</span>
+    </button>
+    <span class="example-spacer"></span>
+  
+    <button  mat-button
+    (click)="irEmpleados()"
+    >
+      <span>Empleados</span>
+    </button>
+  
+    <span class="example-spacer"></span>
+  
+    <button  mat-button
+    (click)="irClientes()"
+    >
+      <span>Clientes</span>
+    </button>
+    <span class="example-spacer"></span>
+  
+    <button  mat-button
+    (click)="irComentarios()"
+      >
+      <span>Comentarios</span>
+    </button>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="fileMenu">NombreUsuario</button>
+    <mat-menu #fileMenu="matMenu">
+      <button  mat-menu-item>Cerrar Sesion</button>
+    </mat-menu>
+  </mat-toolbar>
+  

@@ -33,7 +33,7 @@ export class LoginComponent {
   }
 
   public iniciarSesion(){
-    this.loginService.login(this.loginData).subscribe((data:any)=>{
+   /* this.loginService.login(this.loginData).subscribe((data:any)=>{
       if(data==''){
       
         Swal.fire({
@@ -70,7 +70,8 @@ export class LoginComponent {
 
       }
 
-    });
+    });*/
+    this.router.navigate(['administrador']);
   }
 
 }
