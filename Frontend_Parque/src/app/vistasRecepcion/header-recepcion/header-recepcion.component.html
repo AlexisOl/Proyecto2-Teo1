@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+
+  <button  mat-button
+  (click)="irInicioRecepcion()"
+  >
+    <span>Recepcion</span>
+  </button>
+  <span class="example-spacer"></span>
+
+  <button  mat-button
+  (click)="irAlquiler()"
+  >
+    <span>Generar Alquier de servicios</span>
+  </button>
+
+  <span class="example-spacer"></span>
+
+  <button  mat-button
+  (click)="irReservacion()"
+  >
+    <span>Agenda de Reservaciones</span>
+  </button>
+  <span class="example-spacer"></span>
+
+  <button  mat-button
+  (click)="irCrearCliente()"
+    >
+    <span>Ingreso Clientes</span>
+  </button>
+  <span class="example-spacer"></span>
+  <button mat-button [matMenuTriggerFor]="fileMenu">a</button>
+  <mat-menu #fileMenu="matMenu">
+    <button  mat-menu-item>Cerrar Sesion</button>
+  </mat-menu>
+</mat-toolbar>

@@ -9,6 +9,10 @@ const routes: Routes = [
   {path: 'inicio', component: VistaInicialComponent},
   {path: 'login', component: LoginComponent},
 
+  // path para lo de rececpion
+  {path: 'generalRecepcion',
+  loadChildren: () => import('./vistasRecepcion/recepcion-modulo/recepcion-modulo.module').then(m => m.RecepcionModuloModule) }
+
 ];
 
 @NgModule({
