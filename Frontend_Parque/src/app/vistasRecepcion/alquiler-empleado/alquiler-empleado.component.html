@@ -18,6 +18,41 @@
     </form>
 
 
+    <!--HAGO UN NG IF-->
+<div class="container" >
+  <div class="row">
+    <div class="col-md-6">
+      <label
+        for="nombre"
+        class="mt-5 d-flex justify-content-center"
+      >
+        Nombre de Cliente
+      </label>
+      <input
+        type="text"
+        class="form-control mt-2"
+        placeholder="Código de Producto en Bodega"
+        name="ProductoBodega"
+        [(ngModel)]="nombreCliente"
+      />
+    </div>
+    <div class="col-md-6">
+      <label
+        for="nombre"
+        class="mt-5 d-flex justify-content-center"
+      >
+        Nit de Cliente
+      </label>
+      <input
+        type="text"
+        class="form-control mt-2"
+        placeholder="Código de Producto en Bodega"
+        name="ProductoBodega"
+        [(ngModel)]="nit"
+      />
+    </div>
+  </div>
+</div>
     <!--GENERACION DE UNA TABLA DE CLIENTES INGRESADOS-->
 
 <table class="table table-striped">
@@ -44,6 +79,9 @@
 
 
   </mat-step>
+
+
+
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Fill out your address</ng-template>
@@ -52,12 +90,85 @@
         <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
                required>
       </mat-form-field>
+
+
+      <!--TABLA PARA LAS AREAS RECREATIVAS-->
+      <div class="container">
+        <h1>Listado de Areas Recreativas</h1>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Nit</th>
+            <th scope="col">Population</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let area of areas; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ area.nombre }}
+            </td>
+            <td>{{ area.precio }}</td>
+            <td>
+              <button  mat-raised-button
+              color="accent"
+              (click)="areasRequeridas(area)"
+              >Alquilar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr/>
+
+      <!--TABLA DE AREAS SELECCIONADAS-->
+      <h1>Listado de Areas Seleccionadas</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">precio</th>
+            <th scope="col">Horas de Alquiler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let nuevasAreas of areasSolicitadas; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ nuevasAreas.nombre }}
+            </td>
+            <td>{{ nuevasAreas.precio }}</td>
+            <td>
+              <input
+              type="number"
+              class="form-control mt-2"
+              placeholder="Cantidad de Producto a Vender"
+              name="cantidadProductoVenta"
+              [min]="1"
+              [max]="90000"
+            />
+          </tr>
+        </tbody>
+      </table>
+      <!--botones de ingreso-->
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
+
+
+
+
+
+  <!--PASO FINAL DE LOS ELEMENTOS-->
+
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>

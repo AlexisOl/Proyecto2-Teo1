@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { usuarios } from '../models/usuarios';
 import { clientes } from '../models/clientes';
+import { areas } from '../models/areas';
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +55,11 @@ export class RecepcionServicioService {
         })
       };
       return this.http.post<any>("http://localhost/Backend_Parque/index.php", datos, httpOptions);
+    }
+
+
+    //funcion para obtener las areas
+    obtenerAreasGenerales():Observable<areas> {
+      return this.http.get<areas>(this.url+"?verArea=1");
     }
 }

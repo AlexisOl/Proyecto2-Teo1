@@ -138,4 +138,21 @@ if ($_GET['action'] === 'getColaboradores' && $_SERVER["REQUEST_METHOD"] === "GE
 
 }
 
+
+if ($_GET['verArea'] === '1' && $_SERVER["REQUEST_METHOD"] === "GET") {
+    $bd = include_once "conexionDB.php";
+       
+    $tabla = 'area'; // Asegúrate de tener la variable $tabla definida adecuadamente
+
+        $sql = "SELECT * FROM $tabla";
+        $stmt = $bd->query($sql);
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        if (!empty($result)) {
+            echo json_encode($result);
+        } else {
+            echo json_encode(array('error' => 'No se encontraron resultados para el parámetro nit proporcionado'));
+        }
+
+}
 ?>
