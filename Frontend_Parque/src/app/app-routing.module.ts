@@ -17,15 +17,15 @@ const routes: Routes = [
   {path: '', redirectTo:'inicio',  pathMatch: 'full'},
   {path: 'inicio', component: VistaInicialComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'administrador', component: PaginaPrincipalAdminstradorComponent,/*canActivate: [AdminGuard]*/},
-  {path: 'administrador/areas', component: AreasComponent,/*canActivate: [AdminGuard]*/},
-  {path: 'administrador/empleados', component: EmpleadosComponent,/*canActivate: [AdminGuard]*/},
-  {path: 'administrador/clientes', component: ClientesComponent,/*canActivate: [AdminGuard]*/},
-  {path: 'administrador/comentarios', component: ComentariosComponent,/*canActivate: [AdminGuard]*/},
+  {path: 'administrador', component: PaginaPrincipalAdminstradorComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/areas', component: AreasComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/empleados', component: EmpleadosComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/clientes', component: ClientesComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/comentarios', component: ComentariosComponent,canActivate: [AdminGuard]},
 
   // path para lo de rececpion
   {path: 'generalRecepcion',
-  loadChildren: () => import('./vistasRecepcion/recepcion-modulo/recepcion-modulo.module').then(m => m.RecepcionModuloModule), /*canActivate: [FinanzasGuard]*/},
+  loadChildren: () => import('./vistasRecepcion/recepcion-modulo/recepcion-modulo.module').then(m => m.RecepcionModuloModule), canActivate: [FinanzasGuard]},
   { path: "**", redirectTo: "inicio"}
 
 ];

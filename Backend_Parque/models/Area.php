@@ -12,7 +12,7 @@ class Area {
     
 
     public function __construct($id,$nombre,$precio,$estado,$capacidad,$horaInicio,$horaFin) {
-        $this->idCliente = $id;   
+        $this->idArea = $id;   
         $this->nombre = $nombre;   
         $this->precio = $precio;   
         $this->estado = $estado;   

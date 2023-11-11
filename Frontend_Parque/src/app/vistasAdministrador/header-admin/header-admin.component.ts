@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-header-admin',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderAdminComponent {
 
-  constructor(private rutas:Router) {}
+  constructor(private rutas:Router,public loginService:LoginService) {}
 
   irAreas() {
     this.rutas.navigate(['administrador/areas']);
@@ -21,6 +22,11 @@ export class HeaderAdminComponent {
   }
   irComentarios() {
     this.rutas.navigate(['administrador/comentarios']);
+  }
+
+  public cerrarSesion(){
+    this.loginService.logOut();
+    window.location.reload();
   }
 
 }

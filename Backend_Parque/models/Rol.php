@@ -12,7 +12,7 @@ class Rol {
 
     // Métodos de la clase
     public function obtenerTipo() {
-        return $this->nombre;
+        return $this->nombre_rol;
     }
 
 }

@@ -1,2 +1,24 @@
 <app-header-admin></app-header-admin>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod, perferendis optio dolorem consequatur eum similique in ipsam harum molestiae cupiditate dolorum voluptate neque esse unde sunt quidem quae ab. Possimus?</p>
+<div class="container">
+    <h2 class="text-center mt-5" style="color: aliceblue;" >Usuarios registrados</h2>
+    <table class="table table-striped table-bordered">
+      <thead class="table table-dark">
+        <tr>
+          <th></th>
+          <th>Nombre</th>
+          <th>Usuario</th>
+          <th>Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let empleado of usuarios; let i = index">
+              <td>{{ i + 1 }}</td> 
+              <td>{{empleado.nombre}}</td>
+              <td>{{empleado.usuario}}</td>
+              <td *ngIf="empleado.rol==1">Administrador general</td>
+              <td *ngIf="empleado.rol==2">Administrador finanzas</td>
+              <td *ngIf="empleado.rol==3">Recepcion</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>

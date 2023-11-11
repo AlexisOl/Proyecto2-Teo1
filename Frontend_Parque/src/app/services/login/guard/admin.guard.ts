@@ -2,6 +2,10 @@ import { Injectable, inject } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
 import { LoginService } from "src/app/services/login/login.service";
 
+@Injectable({
+  providedIn: 'root'
+})
+
 
 class PermissionsServiceAdmin {
 
@@ -12,7 +16,6 @@ class PermissionsServiceAdmin {
     if(this.loginService.estaLoggeado()&& this.loginService.getRol()==1){
       return true;
     }
-
     
     this.router.navigate(['login']);
     return false;

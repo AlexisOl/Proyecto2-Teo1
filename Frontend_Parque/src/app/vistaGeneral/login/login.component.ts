@@ -33,8 +33,9 @@ export class LoginComponent {
   }
 
   public iniciarSesion(){
-   /* this.loginService.login(this.loginData).subscribe((data:any)=>{
-      if(data==''){
+    this.loginService.login(this.loginData).subscribe((data:any)=>{
+      
+      if(data=='error'){
       
         Swal.fire({
           icon: 'warning',
@@ -43,15 +44,15 @@ export class LoginComponent {
         });
 
       }else{
-
-       // this.loginService.sesion(data);
+                      
+        this.loginService.sesion(data);
 
         if (this.loginService.getUsuario()!=null) {
 
           switch (this.loginService.getRol()) {
             //admin general
             case 1:
-              this.router.navigate(['adminstrador']);
+              this.router.navigate(['administrador']);
               this.loginService.loginStatusSubject.next(true);
               break;
             //finanzas
@@ -70,8 +71,8 @@ export class LoginComponent {
 
       }
 
-    });*/
-    this.router.navigate(['administrador']);
+    });
+    
   }
 
 }

@@ -156,16 +156,15 @@ ALTER TABLE comentario
 INSERT INTO rol(nombre) values 
 ('Administrador'),
 ('Finanzas'),
-('Recepcionista')
-;
+('Recepcionista');
 
 INSERT INTO empleado(nombre,usuario,rol,contrasenia) values 
-('Jose Lopez','jlopez',1,'123'),
-('Luisa Loarca','lloarca',1,'123'),
-('Eduardo Pozuelo','jpoz',2,'123'),
-('Marta Diaz','mdiaz',2,'123'),
-('Rocio Castañeda','rcast',3,'123'),
-('Marvin Villatoro','mvilla',3,'123');
+('Jose Lopez','jlopez',1,AES_ENCRYPT("teo1", "teo1_2023")),
+('Luisa Loarca','lloarca',1,AES_ENCRYPT("teo1", "teo1_2023")),
+('Eduardo Pozuelo','jpoz',2,AES_ENCRYPT("teo1", "teo1_2023")),
+('Marta Diaz','mdiaz',2,AES_ENCRYPT("teo1", "teo1_2023")),
+('Rocio Castañeda','rcast',3,AES_ENCRYPT("teo1", "teo1_2023")),
+('Marvin Villatoro','mvilla',3,AES_ENCRYPT("teo1", "teo1_2023"));
 
 INSERT INTO cliente(nit, nombre, estadoSuscripcion, fechaInicioPago, direccion) values
 ('459874564','Marcelo Bravo',TRUE,'2023-11-09','Quetzaltenango'),
