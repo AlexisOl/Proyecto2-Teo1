@@ -18,6 +18,9 @@ $router = new Router();
 
 $router->addRoute("POST", "/Backend_Parque/login", "login");
 $router->addRoute("POST", "/Backend_Parque/registrar-empleado", "registrarEmpleado");
+$router->addRoute("GET", "/Backend_Parque/obtener-empleados-admin", "obtenerEmpleadosAdmin");
+$router->addRoute("GET", "/Backend_Parque/obtener-clientes-admin", "obtenerClientesAdmin");
+$router->addRoute("GET", "/Backend_Parque/obtener-areas-admin", "obtenerAreasAdmin");
 
 
 

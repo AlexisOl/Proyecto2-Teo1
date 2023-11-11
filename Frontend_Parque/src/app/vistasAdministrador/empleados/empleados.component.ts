@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { usuarios } from 'src/app/models/usuarios';
+import { AdministradorService } from 'src/app/services/administrador/administrador.service';
 
 @Component({
   selector: 'app-empleados-admin',
@@ -8,11 +9,21 @@ import { usuarios } from 'src/app/models/usuarios';
 })
 export class EmpleadosComponent {
 
-  usuarios: usuarios[] = [
-    { id:1, nombre: "Luisa Lopez", usuario:'llop', rol: 1, contrasenia: '' },
-    { id:1, nombre: "Antonino Conte", usuario:'acont', rol: 2, contrasenia: '' },
-    { id:1, nombre: "Virginia Diaz", usuario:'vdiaz', rol: 3, contrasenia: '' },
-  ];
+  usuarios:usuarios[];
+
+  constructor(private administradorService:AdministradorService){}
+
+  ngOnInit(): void {
+    this.obtenerEmpleados();
+  }
+
+  private obtenerEmpleados()  {
+    this.administradorService.obtenerEmpleados().subscribe(dato=>{
+      this.usuarios = dato;
+    });
+  }
+
+
 
 }
 

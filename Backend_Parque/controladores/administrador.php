@@ -1,6 +1,8 @@
 <?php
 
 require './models/Empleado.php';
+require './models/Cliente.php';
+require './models/Area.php';
 
 function validarCredenciales($bd, $usuario, $contrasenia) {
 
@@ -50,7 +52,7 @@ function insertarEmpleado($bd, $nombre, $usuario, $contrasenia, $rol) {
 }
 
 
-/*function usuarioExiste($bd, $usuario) {
+function usuarioExiste($bd, $usuario) {
     $tabla = 'empleado';
     $sql = "SELECT COUNT(*) FROM $tabla WHERE usuario = :usuario";
     $stmt = $bd->prepare($sql);
@@ -61,5 +63,83 @@ function insertarEmpleado($bd, $nombre, $usuario, $contrasenia, $rol) {
     $numeroFilas = $stmt->fetchColumn();
 
     // Devolver true si el usuario existe, false de lo contrario
-    return $numeroFilas > 0;
-}*/
+
+    if($numeroFilas>0){
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
+function obtenerEmpleados($bd){
+    
+    $tabla = 'empleado';
+    $sql = "SELECT idEmpleado, nombre, usuario, rol FROM $tabla";
+    $stmt = $bd->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $empleados = array();
+
+    foreach ($result as $row) {
+        $empleado = new Empleado($row->idEmpleado, $row->nombre, $row->usuario, $row->rol);
+        $empleados[] = $empleado;
+    }
+
+    return $empleados;
+    
+
+}
+
+function obtenerClientes($bd){
+    
+    $tabla = 'cliente';
+    $sql = "SELECT cliente.idCliente, cliente.nit, cliente.nombre AS nombre, tipoCliente.nombre AS tipoCliente, cliente.estadoSuscripcion, cliente.fechaInicioPago, cliente.direccion
+    FROM $tabla
+    JOIN tipoCliente ON cliente.tipoCliente = tipoCliente.idTipoCliente;";
+    
+
+    $stmt = $bd->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $clientes = array();
+
+
+    foreach ($result as $row) {
+        $cliente = new Cliente($row->idCliente, $row->nombre,$row->nit, $row->estadoSuscripcion, $row->fechaInicioPago,$row->tipoCliente,$row->direccion);
+        $clientes[] = $cliente;
+    }
+
+    return $clientes;
+    
+
+}
+
+function obtenerAreas($bd){
+    
+    $tabla = 'area';
+    $sql = "SELECT area.idArea, area.tipoArea, area.nombre AS nombre, area.precio, area.estado, area.capacidad, area.horaInicio, area.horaFin, area.descripcion,
+    tipoArea.nombre AS tipoArea
+    FROM $tabla
+    INNER JOIN tipoArea ON area.tipoArea = tipoArea.idTipoArea;";
+    
+
+    $stmt = $bd->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $areas = array();
+
+
+    foreach ($result as $row) {
+        
+        $area = new Area($row->idArea, $row->tipoArea,$row->nombre,$row->precio,$row->estado,$row->capacidad,$row->horaInicio,$row->horaFin,$row->descripcion);
+        $areas[] = $area;
+    }
+
+    return $areas;
+    
+
+}

@@ -52,6 +52,41 @@ function registrarEmpleado() {
 
 }
 
+function obtenerEmpleadosAdmin() {
+    
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    // Invocar a la función de consulta SQL
+    $result = obtenerEmpleados($bd);
+    //retornar lo hallado
+    echo json_encode($result);
+
+}
+
+function obtenerClientesAdmin() {
+    
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    // Invocar a la función de consulta SQL
+    $result = obtenerClientes($bd);
+    //retornar lo hallado
+    echo json_encode($result);
+
+}
+
+function obtenerAreasAdmin() {
+    
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    // Invocar a la función de consulta SQL
+    $result = obtenerAreas($bd);
+    //retornar lo hallado
+    echo json_encode($result);
+
+}
 
 
 

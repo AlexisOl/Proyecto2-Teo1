@@ -8,7 +8,7 @@ class Cliente {
     public $estadoSuscripcion;
     public $fechaInicioPago;
     public $tipoCliente;
-    public $ubicacion;
+    public $direccion;
     
 
     public function __construct($id,$nombre,$nit,$estadoSuscripcion,$fechaInicioPago,$tipoCliente,$ubicacion) {
@@ -18,7 +18,7 @@ class Cliente {
         $this->estadoSuscripcion = $estadoSuscripcion;   
         $this->fechaInicioPago = $fechaInicioPago;   
         $this->tipoCliente = $tipoCliente;   
-        $this->ubicacion = $ubicacion;   
+        $this->direccion = $ubicacion;   
         
     }
 
@@ -47,7 +47,7 @@ class Cliente {
     }
 
     public function obtenerUbicacion(){
-        return $this->ubicacion;
+        return $this->direccion;
     }
 
 }

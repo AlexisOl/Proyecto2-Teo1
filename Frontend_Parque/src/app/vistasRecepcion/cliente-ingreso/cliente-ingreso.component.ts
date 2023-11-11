@@ -37,9 +37,10 @@ export class ClienteIngresoComponent implements OnInit{
     const nuevoCliente:clientes = new clientes();
     nuevoCliente.nit = this.nit;
     nuevoCliente.id = null;
-    nuevoCliente.nombre = this.nit;
-    nuevoCliente.estado = this.estado;
-    nuevoCliente.ubicacion= this.ubicacion;
+    nuevoCliente.nombre = this.nombre;
+    //nuevoCliente.tipoCliente = this.nit;
+    nuevoCliente.estadoSuscripcion = this.estado;
+    nuevoCliente.direccion = this.ubicacion;
 
     this.servicioRecepcion.ingresoCliente(nuevoCliente).subscribe(
       (ingresado) => {
