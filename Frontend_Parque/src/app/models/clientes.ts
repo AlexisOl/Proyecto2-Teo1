@@ -1,7 +1,9 @@
 export class clientes {
   id!: number | null
-  nit!:string
+  nit!:string 
   nombre!:string
-  estado!: boolean
-  ubicacion!:string
+  estadoSuscripcion!: boolean
+  tipoCliente!:any;
+  fechaInicioPago:Date; 
+  direccion!:string
 }

@@ -7,8 +7,8 @@
 //--------------------------
 // SOLO CAMBIAR EN BASE A SUS CREDENCIALES  ----------------
 //--------------------------
- $username = 'adminstracionParque';
- $password = 'TuContrasenaSegura';
+ $username = 'administracionParque';
+ $password = 'Teori@sistemas1';
 
 try {
     return new PDO('mysql:host=localhost:3306;dbname=' . $dbname, $username, $password);

@@ -10,7 +10,7 @@ class manejo {
     private $control;
 
     public function __construct() {
-        $this->control = new conexion();
+        $this->control = include_once "conexionDB.php";
     }
 
     // Obtener colaboradores

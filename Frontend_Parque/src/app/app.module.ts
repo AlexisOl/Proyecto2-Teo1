@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -38,7 +38,6 @@ import { VerAgendaComponent } from './vistasRecepcion/ver-agenda/ver-agenda.comp
     AlquilerEmpleadoComponent,
     ReservacionesEmpleadosComponent,
     ClienteIngresoComponent,
-    VerAgendaComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +54,9 @@ import { VerAgendaComponent } from './vistasRecepcion/ver-agenda/ver-agenda.comp
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatStepperModule
+    MatStepperModule,
+    CarouselModule.forRoot(),
+    VerAgendaComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

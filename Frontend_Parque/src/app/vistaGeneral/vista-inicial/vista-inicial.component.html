@@ -1,85 +1,26 @@
 <app-header-general></app-header-general>
-<ngb-carousel *ngIf="images">
-	<ng-template ngbSlide>
-		<div class="picsum-img-wrapper">
-			<img src="../../img/Parques.jpg" alt="Random first slide" />
+<body>
+	<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+		  <div class="carousel-item active" data-bs-interval="3000">
+			<img src="../../../assets/img/parque1.jpg" class="d-block w-100" alt="...">
+		  </div>
+		  <div class="carousel-item" data-bs-interval="3000">
+			<img src="../../../assets/img/salon1.jpg" class="d-block w-100" alt="...">
+		  </div>
+		  <div class="carousel-item" data-bs-interval="3000" >
+			<img src="../../../assets/img/parque.jpg" class="d-block w-100" alt="...">
+		  </div>
 		</div>
-		<div class="carousel-caption">
-			<h3>First slide label</h3>
-			<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-		</div>
-	</ng-template>
-	<ng-template ngbSlide>
-		<div class="picsum-img-wrapper">
-			<img [src]="images[1]" alt="Random second slide" />
-		</div>
-		<div class="carousel-caption">
-			<h3>Second slide label</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		</div>
-	</ng-template>
-	<ng-template ngbSlide>
-		<div class="picsum-img-wrapper">
-			<img [src]="images[2]" alt="Random third slide" />
-		</div>
-		<div class="carousel-caption">
-			<h3>Third slide label</h3>
-			<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-		</div>
-	</ng-template>
-</ngb-carousel>
-<div ngbAccordion>
-	<div ngbAccordionItem [collapsed]="false">
-		<h2 ngbAccordionHeader>
-			<button ngbAccordionButton>Simple</button>
-		</h2>
-		<div ngbAccordionCollapse>
-			<div ngbAccordionBody>
-				<ng-template>
-					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-					officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-					moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
-					keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-					butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
-					haven't heard of them accusamus labore sustainable VHS.
-				</ng-template>
-			</div>
-		</div>
-	</div>
-	<div ngbAccordionItem>
-		<h2 ngbAccordionHeader>
-			<button ngbAccordionButton>
-				<span>&#9733; <b>Fancy</b> title &#9733;</span>
-			</button>
-		</h2>
-		<div ngbAccordionCollapse>
-			<div ngbAccordionBody>
-				<ng-template>
-					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-					officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-					moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
-					keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-					butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
-					haven't heard of them accusamus labore sustainable VHS.
-				</ng-template>
-			</div>
-		</div>
-	</div>
-	<div ngbAccordionItem [disabled]="true">
-		<h2 ngbAccordionHeader>
-			<button ngbAccordionButton>Disabled</button>
-		</h2>
-		<div ngbAccordionCollapse>
-			<div ngbAccordionBody>
-				<ng-template>
-					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-					officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-					moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
-					keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-					butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
-					haven't heard of them accusamus labore sustainable VHS.
-				</ng-template>
-			</div>
-		</div>
-	</div>
-</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		  <span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		  <span class="visually-hidden">Next</span>
+		</button>
+	  </div>	
+</body>
+
+<h1 style="color: aliceblue;">ANUNCIOS</h1>
