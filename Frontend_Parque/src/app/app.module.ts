@@ -25,6 +25,13 @@ import { ReservacionesEmpleadosComponent } from './vistasRecepcion/reservaciones
 import { ClienteIngresoComponent } from './vistasRecepcion/cliente-ingreso/cliente-ingreso.component';
 import { MatCardModule } from '@angular/material/card';
 import { VerAgendaComponent } from './vistasRecepcion/ver-agenda/ver-agenda.component';
+import { HeaderAdminComponent } from './vistasAdministrador/header-admin/header-admin.component';
+import { EmpleadosComponent } from './vistasAdministrador/empleados/empleados.component';
+import { AreasComponent } from './vistasAdministrador/areas/areas.component';
+import { ClientesComponent } from './vistasAdministrador/clientes/clientes.component';
+import { ComentariosComponent } from './vistasAdministrador/comentarios/comentarios.component';
+import { PaginaPrincipalAdminstradorComponent } from './vistasAdministrador/pagina-principal-adminstrador/pagina-principal-adminstrador.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +45,13 @@ import { VerAgendaComponent } from './vistasRecepcion/ver-agenda/ver-agenda.comp
     AlquilerEmpleadoComponent,
     ReservacionesEmpleadosComponent,
     ClienteIngresoComponent,
+    VerAgendaComponent,
+    HeaderAdminComponent,
+    EmpleadosComponent,
+    AreasComponent,
+    ComentariosComponent,
+    ClientesComponent,
+    PaginaPrincipalAdminstradorComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +70,6 @@ import { VerAgendaComponent } from './vistasRecepcion/ver-agenda/ver-agenda.comp
     MatInputModule,
     MatStepperModule,
     CarouselModule.forRoot(),
-    VerAgendaComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
