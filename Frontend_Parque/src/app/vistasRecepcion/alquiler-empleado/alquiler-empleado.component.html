@@ -181,6 +181,7 @@
       </table>
       <!--botones de ingreso-->
       <button mat-raised-button color="primary" (click)="DeterminarValoresAreas()">Solicitar</button>
+      <button mat-raised-button color="accent" (click)="verElementosGeneralesAreas()">nuevo</button>
 
       <hr/>
       <div>
@@ -197,8 +198,93 @@
   <!--PASO FINAL DE LOS ELEMENTOS-->
 
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+
+    <!--AQUI EL INGRESO DE TABLA-->
+    <div class="container">
+      <h1>Recopilacion de Seleccion</h1>
+    </div>
+    <!--informacion del cliente-->
+    <div class="container" >
+      <div class="row">
+        <div class="col-md-4">
+          <label
+            for="nombre"
+            class="mt-5 d-flex justify-content-center"
+          >
+            Nombre de Cliente
+          </label>
+          <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="Nombre Cliente"
+            name="ProductoBodega"
+            [(ngModel)]="nombreCliente"
+            readonly
+          />
+        </div>
+        <div class="col-md-4">
+          <label
+            for="nombre"
+            class="mt-5 d-flex justify-content-center"
+          >
+            Nit de Cliente
+          </label>
+          <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="Nit de cliente"
+            name="ProductoBodega"
+            [(ngModel)]="nit"
+            readonly
+          />
+        </div>
+        <div class="col-md-4">
+          <label
+            for="nombre"
+            class="mt-5 d-flex justify-content-center"
+          >
+            Nombre de Usuario Venta
+          </label>
+          <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="Código de Usuario"
+            name="ProductoBodega"
+            value=1
+            readonly
+          />
+        </div>
+      </div>
+    </div>
+
+    <!--ifnromacion de las areas-->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">precio Parcial</th>
+          <th scope="col">Horas</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let clientes of areasSolicitadas; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            {{ clientes.nombre }}
+          </td>
+          <td>{{ clientes.preciosParciales }}</td>
+          <td>{{ clientes.horasTotal }}</td>
+          <td>{{ clientes.fecha }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+    <!--SOLO BOTONES DE MOVIMIENTO-->
     <div>
       <button mat-button matStepperPrevious>Regreso</button>
       <button mat-button (click)="stepper.reset()">Reiniciar</button>

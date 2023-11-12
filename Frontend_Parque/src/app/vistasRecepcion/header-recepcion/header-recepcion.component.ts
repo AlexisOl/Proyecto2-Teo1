@@ -23,5 +23,7 @@ export class HeaderRecepcionComponent {
   irCrearCliente() {
     this.rutas.navigate(['./generalRecepcion/crearCliente']);
   }
-
+  irVerAgenda() {
+    this.rutas.navigate(['./generalRecepcion/verAgenda']);
+  }
 }

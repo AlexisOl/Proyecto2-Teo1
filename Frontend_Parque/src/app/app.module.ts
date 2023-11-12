@@ -24,6 +24,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { ReservacionesEmpleadosComponent } from './vistasRecepcion/reservaciones-empleados/reservaciones-empleados.component';
 import { ClienteIngresoComponent } from './vistasRecepcion/cliente-ingreso/cliente-ingreso.component';
 import { MatCardModule } from '@angular/material/card';
+import { VerAgendaComponent } from './vistasRecepcion/ver-agenda/ver-agenda.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatCardModule } from '@angular/material/card';
     AlquilerEmpleadoComponent,
     ReservacionesEmpleadosComponent,
     ClienteIngresoComponent,
+    VerAgendaComponent,
   ],
   imports: [
     BrowserModule,

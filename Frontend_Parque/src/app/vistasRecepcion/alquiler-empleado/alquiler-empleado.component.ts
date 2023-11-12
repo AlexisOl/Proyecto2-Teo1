@@ -78,10 +78,24 @@ export class AlquilerEmpleadoComponent implements OnInit {
 
   DeterminarValoresAreas(){
     console.log(this.areasSolicitadas);
-    //ver si es valido con las horas min < max
 
   }
+// solo para ver elementos generales
+verElementosGeneralesAreas(){
+  console.log(this.areasSolicitadas);
+  this.areasSolicitadas.forEach(
+    (elementos:any) => {
+      if (elementos.horaInicio <elementos.horaFin) {
+        elementos.horasTotal =  elementos.horaFin -elementos.horaInicio;
+        elementos.preciosParciales = elementos.horasTotal*elementos.precioUnitario;
+        // los elementos que si se van a comparar
+        elementos.horaCorrecta = true;
+      }
+    }
 
+  )
+
+}
 
 
 
