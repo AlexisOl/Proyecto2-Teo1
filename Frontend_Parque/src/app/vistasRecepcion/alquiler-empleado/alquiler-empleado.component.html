@@ -13,7 +13,7 @@
         required>
       </mat-form-field>
       <div>
-        <button (click)="verPorNit()" mat-button matStepperNext>Next</button>
+        <button (click)="verPorNit()" mat-button matStepperNext>Siguiente</button>
       </div>
     </form>
 
@@ -83,7 +83,9 @@
 
 
   <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+
+
+    <form  class="form-container" #f="ngForm">
       <ng-template matStepLabel>Fill out your address</ng-template>
       <mat-form-field>
         <mat-label>Address</mat-label>
@@ -131,34 +133,59 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
-            <th scope="col">precio</th>
-            <th scope="col">Horas de Alquiler</th>
+            <th scope="col">precio por hora</th>
+            <th scope="col">Fecha de Alquiler</th>
+            <th scope="col">Horas de Alquiler Inicial</th>
+            <th scope="col">Horas de Alquiler Final</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let nuevasAreas of areasSolicitadas; index as i">
+          <tr *ngFor="let nuevasAreas of areasSolicitadas; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-            <td>
-              {{ nuevasAreas.nombre }}
-            </td>
-            <td>{{ nuevasAreas.precio }}</td>
+            <td>{{ nuevasAreas.nombreArea }}</td>
+            <td>{{ nuevasAreas.precioUnitario }}</td>
             <td>
               <input
-              type="number"
-              class="form-control mt-2"
-              placeholder="Cantidad de Producto a Vender"
-              name="cantidadProductoVenta"
-              [min]="1"
-              [max]="90000"
-            />
+                type="date"
+                class="form-control mt-2"
+                placeholder="Cantidad de Producto a Vender"
+                name="fechaAlquiler"
+                [(ngModel)]="nuevasAreas.fecha"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                class="form-control mt-2"
+                placeholder="Hora Inicial"
+                name="horainicial"
+                [min]="1"
+                [max]="90000"
+                [(ngModel)]="nuevasAreas.horaInicio"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                class="form-control mt-2"
+                placeholder="Hora Final"
+                name="horafinal"
+                [min]="1"
+                [max]="90000"
+                [(ngModel)]="nuevasAreas.horaFin"
+              />
+            </td>
           </tr>
+
         </tbody>
       </table>
       <!--botones de ingreso-->
+      <button mat-raised-button color="primary" (click)="DeterminarValoresAreas()">Solicitar</button>
 
+      <hr/>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Regreso</button>
+        <button mat-button matStepperNext>Siguiente</button>
       </div>
     </form>
   </mat-step>
@@ -173,8 +200,8 @@
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button matStepperPrevious>Regreso</button>
+      <button mat-button (click)="stepper.reset()">Reiniciar</button>
     </div>
   </mat-step>
 </mat-stepper>

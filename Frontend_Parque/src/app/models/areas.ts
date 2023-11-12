@@ -4,7 +4,9 @@ export class areas {
   precio!:number
   descripcion!:string
   estado!:boolean
-  horaInicio!:Date
-  horaFin!:Date
+  horaInicio!:string
+  horaFin!:string
+
+
 
 }

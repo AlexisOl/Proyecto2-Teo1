@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { areas } from 'src/app/models/areas';
+import { asignacionVentaArea } from 'src/app/models/asignacionVentaArea';
 import { clientes } from 'src/app/models/clientes';
+import { venta } from 'src/app/models/venta';
 import { RecepcionServicioService } from 'src/app/services/recepcion-servicio.service';
 @Component({
   selector: 'app-alquiler-empleado',
@@ -15,6 +17,10 @@ export class AlquilerEmpleadoComponent implements OnInit {
   areas:any;
   areasSolicitadas:any=[];
 
+  // elementos a agregar
+  binding1:any
+  binding2:any
+
 
   //elementos de utilidad clietnes
   nit:any;
@@ -25,12 +31,12 @@ export class AlquilerEmpleadoComponent implements OnInit {
 
   //movimineto del forrm group
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    firstCtrl: [''],
   });
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    secondCtrl: [''],
   });
-  isLinear = false;
+  isLinear = true;
 
   constructor(private _formBuilder: FormBuilder,
               private empleadoServicio: RecepcionServicioService,
@@ -40,7 +46,18 @@ export class AlquilerEmpleadoComponent implements OnInit {
   //funcion para actualizar elementos solicitados
   areasRequeridas(area:areas){
     this.areas = this.areas.filter((quitar: any) => quitar.nombre !== area.nombre);
-    this.areasSolicitadas.push(area);
+    //aqui mejor crear el objeto de tipo "venta"
+    const nuevaVenta:asignacionVentaArea = new asignacionVentaArea();
+    nuevaVenta.idArea = area.idArea;
+    nuevaVenta.nombreArea = area.nombre;
+    nuevaVenta.precioUnitario = area.precio;
+
+    // pero son para
+    nuevaVenta.horaInicio = parseInt("11");
+    nuevaVenta.horaFin = parseInt(area.horaFin);
+    nuevaVenta.fecha = null;
+
+    this.areasSolicitadas.push(nuevaVenta);
   }
 
   //funcion para ver clientes por nit
@@ -56,6 +73,26 @@ export class AlquilerEmpleadoComponent implements OnInit {
     ) ;
   }
 
+
+  //FUNCION PARA DETERMINAR MONTO HORAS
+
+  DeterminarValoresAreas(){
+    console.log(this.areasSolicitadas);
+    //ver si es valido con las horas min < max
+
+  }
+
+
+
+
+
+
+
+
+  //--------- INICIALIZADOR
+  //--------- INICIALIZADOR
+  //--------- INICIALIZADOR
+  //--------- INICIALIZADOR
 
   ngOnInit(): void {
 

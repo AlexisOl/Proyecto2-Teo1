@@ -1,4 +1,6 @@
 export class facturas {
-  id!:undefined|number
-
+  idFactura!: undefined|number
+  detalle!:string
+  nitCliente!:string
+  fecha!:Date
 }
