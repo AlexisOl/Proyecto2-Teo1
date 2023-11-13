@@ -95,7 +95,7 @@ export class RecepcionServicioService {
           'Content-Type': 'application/json'
         })
       };
-      return this.http.post<empleadoFactura>(this.url+"?ingresoFactura=1", nuevaFacturaAsociada, httpOptions);
+      return this.http.post<empleadoFactura>(this.url+"?ingresoFacturaAsociada=1", nuevaFacturaAsociada, httpOptions);
     }
 
     //buscar facturas
@@ -103,5 +103,11 @@ export class RecepcionServicioService {
   obtenerFacturaCompra(factura:facturas): Observable<facturas> {
     const url = `${this.url}?verFactura=${factura.nitCliente}&detalleFactura=${factura.detalle}&fechaFactura=${factura.fecha}`;
     return this.http.get<facturas>(url);
+  }
+
+
+  /// para ver todas las facturas asi como lugares ya no disponibles
+  obtenerFacturasGlobales():Observable<venta> {
+    return this.http.get<venta>(this.url+"?verFacturasGlobales=1");
   }
 }

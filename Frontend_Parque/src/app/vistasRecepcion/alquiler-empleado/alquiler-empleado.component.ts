@@ -4,6 +4,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { areas } from 'src/app/models/areas';
 import { asignacionVentaArea } from 'src/app/models/asignacionVentaArea';
 import { clientes } from 'src/app/models/clientes';
+import { empleadoFactura } from 'src/app/models/ermpleadoFactura';
 import { facturas } from 'src/app/models/facturas';
 import { venta } from 'src/app/models/venta';
 import { RecepcionServicioService } from 'src/app/services/recepcion-servicio.service';
@@ -34,6 +35,7 @@ export class AlquilerEmpleadoComponent implements OnInit {
   //elemento de utilidad para enlazar la factura
   facturaObtenida:any;
   idFacturaActual:any;
+  idusuarioVenta:any
 
 
   //movimineto del forrm group
@@ -119,7 +121,18 @@ verElementosGeneralesAreas(){
       //ahroa mandar elemento
       this.empleadoServicio.crearVentaDetllada(nuevaVenta).subscribe();
     }
-  )
+  );
+
+
+  //luego el ingreso de la facuta por empleado;
+
+  const nuevaFacturaAsociada: empleadoFactura = new empleadoFactura();
+  nuevaFacturaAsociada.idEmpleado = this.idusuarioVenta;
+  nuevaFacturaAsociada.idFactura = idFactura;
+
+
+  this.empleadoServicio.crearFacturaAsociada(nuevaFacturaAsociada).subscribe();
+
 }
 
 //generador de factura
@@ -168,6 +181,7 @@ ingresoParaVentas(){
 
   ngOnInit(): void {
 
+    this.idusuarioVenta = 1;
     // para obtener a cada usuario
     this.empleadoServicio.verUsuarios().subscribe(
       clientes => {
