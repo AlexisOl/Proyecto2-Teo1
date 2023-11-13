@@ -1,1 +1,26 @@
-<app-header-recepcion/>
+<app-header-recepcion></app-header-recepcion>
+
+  <!--AQUI EL INGRESO DE TABLA-->
+  <div class="container">
+    <h1 style="color: aliceblue;">Informacion Usuario</h1>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">precio Parcial</th>
+        <th scope="col">Horas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let clientes of datos; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          {{ clientes.nombre }}
+        </td>
+        <td>{{ clientes.nit }}</td>
+        <td>{{ clientes.estado }}</td>
+      </tr>
+    </tbody>
+  </table>

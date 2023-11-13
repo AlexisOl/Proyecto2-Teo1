@@ -25,7 +25,7 @@ const routes: Routes = [
 
   // path para lo de rececpion
   {path: 'generalRecepcion',
-  loadChildren: () => import('./vistasRecepcion/recepcion-modulo/recepcion-modulo.module').then(m => m.RecepcionModuloModule), canActivate: [FinanzasGuard]},
+  loadChildren: () => import('./vistasRecepcion/recepcion-modulo/recepcion-modulo.module').then(m => m.RecepcionModuloModule), /*canActivate: [FinanzasGuard]*/},
   { path: "**", redirectTo: "inicio"}
 
 ];

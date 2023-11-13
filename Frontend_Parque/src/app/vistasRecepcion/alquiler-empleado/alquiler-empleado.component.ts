@@ -4,6 +4,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { areas } from 'src/app/models/areas';
 import { asignacionVentaArea } from 'src/app/models/asignacionVentaArea';
 import { clientes } from 'src/app/models/clientes';
+import { facturas } from 'src/app/models/facturas';
 import { venta } from 'src/app/models/venta';
 import { RecepcionServicioService } from 'src/app/services/recepcion-servicio.service';
 @Component({
@@ -26,7 +27,13 @@ export class AlquilerEmpleadoComponent implements OnInit {
   nit:any;
   usuarioSeleccionado:any;
   nombreCliente:any
+  detalle:any
+  fecha:any
 
+
+  //elemento de utilidad para enlazar la factura
+  facturaObtenida:any;
+  idFacturaActual:any;
 
 
   //movimineto del forrm group
@@ -95,6 +102,57 @@ verElementosGeneralesAreas(){
 
   )
 
+}
+//funcion para ingresar ventas DB
+ ingresoVentas(idFactura:number|null){
+
+  this.areasSolicitadas.forEach(
+    (generar:any) => {
+      const nuevaVenta: venta = new venta();
+      nuevaVenta.horas = generar.horasTotal;
+      nuevaVenta.idArea = generar.idArea;
+      nuevaVenta.montoParcial = generar.preciosParciales;
+      nuevaVenta.idFactura = idFactura;
+      nuevaVenta.fechaVenta = generar.fecha;
+      console.log(nuevaVenta);
+
+      //ahroa mandar elemento
+      this.empleadoServicio.crearVentaDetllada(nuevaVenta).subscribe();
+    }
+  )
+}
+
+//generador de factura
+
+   generarFactura(){
+    const nuevaFactura: facturas = new facturas();
+    nuevaFactura.detalle = this.detalle;
+    nuevaFactura.nitCliente = this.nit;
+    nuevaFactura.fecha = this.fecha;
+    nuevaFactura.idFactura = null;
+    this.empleadoServicio.crearFactura(nuevaFactura).subscribe(
+    );
+
+
+
+}
+
+ingresoParaVentas(){
+  const nuevaFactura: facturas = new facturas();
+  nuevaFactura.detalle = this.detalle;
+  nuevaFactura.nitCliente = this.nit;
+  nuevaFactura.fecha = this.fecha;
+  nuevaFactura.idFactura = null;
+  this.empleadoServicio.obtenerFacturaCompra(nuevaFactura).subscribe(
+    (nuevo:facturas) => {
+      console.log(nuevo);
+      let facturaObtenida:any = new facturas();
+      facturaObtenida=nuevo;
+      this.idFacturaActual = facturaObtenida[0].idFactura
+       console.log("aquiiiiiiiii "+this.idFacturaActual);
+    }
+
+  );
 }
 
 

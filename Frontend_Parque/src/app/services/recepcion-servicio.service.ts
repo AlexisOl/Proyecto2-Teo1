@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { usuarios } from '../models/usuarios';
 import { clientes } from '../models/clientes';
 import { areas } from '../models/areas';
+import { facturas } from '../models/facturas';
+import { venta } from '../models/venta';
+import { empleadoFactura } from '../models/ermpleadoFactura';
 
 @Injectable({
   providedIn: 'root'
@@ -62,4 +65,43 @@ export class RecepcionServicioService {
     obtenerAreasGenerales():Observable<areas> {
       return this.http.get<areas>(this.url+"?verArea=1");
     }
+
+    //funcion para ingreso de facturas
+
+    crearFactura(nuevaFactura: facturas):Observable<facturas> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
+      return this.http.post<facturas>(this.url+"?ingresoFactura=1", nuevaFactura, httpOptions);
+    }
+
+    //funcion para la creacion de ventas detalladas
+
+    crearVentaDetllada(nuevaVenta:venta):Observable<venta> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
+      return this.http.post<venta>(this.url+"?ingresoVentaDetallada=1", nuevaVenta, httpOptions);
+    }
+
+    //funcion para la creacion de venta por usuario
+    crearFacturaAsociada(nuevaFacturaAsociada:empleadoFactura):Observable<empleadoFactura> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
+      return this.http.post<empleadoFactura>(this.url+"?ingresoFactura=1", nuevaFacturaAsociada, httpOptions);
+    }
+
+    //buscar facturas
+      //ver clientes
+  obtenerFacturaCompra(factura:facturas): Observable<facturas> {
+    const url = `${this.url}?verFactura=${factura.nitCliente}&detalleFactura=${factura.detalle}&fechaFactura=${factura.fecha}`;
+    return this.http.get<facturas>(url);
+  }
 }

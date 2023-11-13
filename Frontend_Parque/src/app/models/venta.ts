@@ -4,7 +4,7 @@ export class venta {
   idArea!:number|undefined
   montoParcial!:number
   descripcion!:string
-  idFactura!:number|undefined
+  idFactura!:number|null
 
   // ELEMENTO AGREGAOD
   fechaVenta!: Date

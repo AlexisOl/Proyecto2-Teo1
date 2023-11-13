@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./pagina-principal.component.css']
 })
 export class PaginaPrincipalComponent {
-
+datos:any
 }

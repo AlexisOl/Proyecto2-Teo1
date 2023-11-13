@@ -71,7 +71,7 @@
 				{{ clientes.nombre }}
 			</td>
 			<td>{{ clientes.nit }}</td>
-			<td>{{ clientes.estado }}</td>
+			<td>{{ clientes.idCliente }}</td>
 		</tr>
 	</tbody>
 </table>
@@ -280,8 +280,48 @@
         </tr>
       </tbody>
     </table>
+    <div class="container" >
+      <div class="row">
+
+        <div class="col-md-6">
+          <label
+            for="nombre"
+            class="mt-5 d-flex justify-content-center"
+          >
+            Detalle de Alquiler
+          </label>
+          <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="Nit de cliente"
+            name="ProductoBodega"
+            [(ngModel)]="detalle"
+
+          />
+        </div>
+        <div class="col-md-6">
+          <label
+            for="nombre"
+            class="mt-5 d-flex justify-content-center"
+          >
+            Nombre de Usuario Venta
+          </label>
+          <input
+            type="date"
+            class="form-control mt-2"
+            placeholder="Código de Usuario"
+            name="ProductoBodega"
+            [(ngModel)]="fecha"
 
 
+          />
+        </div>
+      </div>
+    </div>
+
+    <button mat-raised-button color="warn" (click)="generarFactura()">Ingreso Factura</button>
+    <button mat-raised-button color="warn" (click)="ingresoParaVentas()">Ingreso Ventas</button>
+    <button mat-raised-button color="warn" (click)="ingresoVentas(this.idFacturaActual)">Generacion Venta</button>
 
 
     <!--SOLO BOTONES DE MOVIMIENTO-->
