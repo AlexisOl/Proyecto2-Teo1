@@ -1,6 +1,8 @@
 <app-header-admin></app-header-admin>
 
 <div class="container">
+
+  <div>
   
     <h2 class="text-center mt-5" style="color: aliceblue;" >Clientes registrados</h2>
     <table class="table table-striped table-bordered">
@@ -9,9 +11,7 @@
           <th></th>
           <th class="text-center" >Nit</th>
           <th class="text-center" >Nombre</th>
-          <th class="text-center" >Suscripción</th>
           <th class="text-center" >Tipo de cliente</th>
-          <th class="text-center" >Inicio de pago</th>
           <th class="text-center" >Dirección</th>
         </tr>
       </thead>
@@ -20,13 +20,11 @@
               <td>{{ i + 1 }}</td> 
               <td>{{cliente.nit}}</td>
               <td>{{cliente.nombre}}</td>
-              <td class = "table-danger" *ngIf="cliente.estadoSuscripcion==false">No activa</td>
-              <td *ngIf="cliente.estadoSuscripcion==true">Activa</td>
               <td class = "table-info" *ngIf="cliente.tipoCliente=='Inquilino'">Inquilino</td>
               <td class = "table-warning" *ngIf="cliente.tipoCliente=='Visitante'">Visitante</td>
-              <td>{{cliente.fechaInicioPago}}</td>
               <td>{{cliente.direccion}}</td>
           </tr>
       </tbody>
     </table>
+  </div>
   </div>

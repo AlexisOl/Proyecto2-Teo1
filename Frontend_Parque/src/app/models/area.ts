@@ -3,7 +3,6 @@ export class Area {
     tipoArea:string;
     nombre:string;
     precio:number;
-    estado:boolean;
     capacidad:number;
     horaInicio:string;
     horaFin:string;

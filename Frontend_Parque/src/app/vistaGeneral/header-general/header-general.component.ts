@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
@@ -8,4 +9,6 @@ import { LoginService } from 'src/app/services/login/login.service';
 })
 export class HeaderGeneralComponent {
 
+  constructor(private router:Router){}
+  
 }

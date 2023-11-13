@@ -10,6 +10,8 @@ import { ClientesComponent } from './vistasAdministrador/clientes/clientes.compo
 import { AreasComponent } from './vistasAdministrador/areas/areas.component';
 import { EmpleadosComponent } from './vistasAdministrador/empleados/empleados.component';
 import { ComentariosComponent } from './vistasAdministrador/comentarios/comentarios.component';
+import { CrearEmpleadoComponent } from './vistasAdministrador/empleados/crear-empleado/crear-empleado.component';
+import { CrearAreaComponent } from './vistasAdministrador/areas/crear-area/crear-area.component';
 
 
 const routes: Routes = [
@@ -19,7 +21,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'administrador', component: PaginaPrincipalAdminstradorComponent,canActivate: [AdminGuard]},
   {path: 'administrador/areas', component: AreasComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/crear-area', component: CrearAreaComponent,canActivate: [AdminGuard]},
   {path: 'administrador/empleados', component: EmpleadosComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/crear-empleado', component: CrearEmpleadoComponent,canActivate: [AdminGuard]},
+  //{path: 'administrador/editar-empleado', component: EmpleadosComponent,canActivate: [AdminGuard]},
   {path: 'administrador/clientes', component: ClientesComponent,canActivate: [AdminGuard]},
   {path: 'administrador/comentarios', component: ComentariosComponent,canActivate: [AdminGuard]},
 

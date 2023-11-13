@@ -5,18 +5,14 @@ class Cliente {
     public $idCliente;
     public $nombre;
     public $nit;
-    public $estadoSuscripcion;
-    public $fechaInicioPago;
     public $tipoCliente;
     public $direccion;
     
 
-    public function __construct($id,$nombre,$nit,$estadoSuscripcion,$fechaInicioPago,$tipoCliente,$ubicacion) {
+    public function __construct($id,$nombre,$nit,$tipoCliente,$ubicacion) {
         $this->idCliente = $id;   
         $this->nombre = $nombre;   
         $this->nit = $nit;   
-        $this->estadoSuscripcion = $estadoSuscripcion;   
-        $this->fechaInicioPago = $fechaInicioPago;   
         $this->tipoCliente = $tipoCliente;   
         $this->direccion = $ubicacion;   
         
@@ -32,14 +28,6 @@ class Cliente {
 
     public function obtenerNit(){
         return $this->nit;
-    }
-
-    public function obtenerEstadoSuscripcion(){
-        return $this->estadoSuscripcion;
-    }
-
-    public function obtenerFechaInicioPago(){
-        return $this->fechaInicioPago;
     }
 
     public function obtenerTipoCliente(){

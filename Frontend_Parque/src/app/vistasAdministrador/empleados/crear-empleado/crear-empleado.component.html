@@ -1,1 +1,82 @@
-<p>crear-empleado works!</p>
+<app-header-admin></app-header-admin>
+
+
+<div class="container mt-5 mb-5">
+  
+  <form class="form-container" #f = "ngForm" >
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title class="text-center">Crear empleado</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <hr />
+
+        <div class="row">
+          <div class="col-md-6">
+            <label [for]="nombre" class="mt-5 d-flex ">
+              Nombre del empleado
+            </label>
+            <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="Ingresa el nombre del empleado"
+            name="nombre"
+            [(ngModel)]="nombre"
+          />
+          </div>
+          <div class="col-md-6">
+            <label [for]="usuario" class="mt-5 d-flex">
+              Nombre de usuario del empleado
+            </label>
+            <input
+              type="text"
+              class="form-control mt-2"
+              placeholder="Ingresa el nombre de usuario"
+              name="usuario"              
+              [(ngModel)]="usuario"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mt-4">
+            <label class="mt-1 d-flex ">
+              Tipo de usuario
+            </label>
+            <mat-form-field class="mt-2">
+              <mat-label>Selecciona un rol</mat-label>
+              <select matNativeControl [(ngModel)]="tipoEmpleado" [ngModelOptions]="{standalone: true}">
+                
+                <option *ngFor="let rol of roles" [value]="rol.idRol">{{ rol.nombre_rol }}</option>
+              </select>
+            </mat-form-field>
+
+
+          </div>
+          <div class="col-md-6 mt-4">
+
+            <label [for]="contrasenia" class="d-flex">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              class="form-control mt-2"
+              placeholder="Ingresa la contraseña"
+              name="contrasenia"
+              [(ngModel)]="contrasenia"
+              
+            />
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-success" (click)="crearEmpleado()">Registrar</button>
+      </div>
+
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

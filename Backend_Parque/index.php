@@ -21,6 +21,15 @@ $router->addRoute("POST", "/Backend_Parque/registrar-empleado", "registrarEmplea
 $router->addRoute("GET", "/Backend_Parque/obtener-empleados-admin", "obtenerEmpleadosAdmin");
 $router->addRoute("GET", "/Backend_Parque/obtener-clientes-admin", "obtenerClientesAdmin");
 $router->addRoute("GET", "/Backend_Parque/obtener-areas-admin", "obtenerAreasAdmin");
+$router->addRoute("GET", "/Backend_Parque/obtener-roles-admin", "obtenerRolesAdmin");
+$router->addRoute("GET", "/Backend_Parque/validar-usuario-admin", "validarUsuarioAdmin");
+$router->addRoute("GET", "/Backend_Parque/obtener-tipos-area", "obtenerTiposArea");
+$router->addRoute("GET", "/Backend_Parque/validar-nombre-area", "validarNombreAreaAdmin");
+$router->addRoute("POST", "/Backend_Parque/crear-area", "crearAreaAdmin");
+$router->addRoute("GET", "/Backend_Parque/validar-nombre-tipo-area", "validarNombreTipoArea");
+$router->addRoute("POST", "/Backend_Parque/crear-tipo-area", "crearTipoAreaAdmin");
+$router->addRoute("POST", "/Backend_Parque/crear-anuncio", "crearAnuncio");
+$router->addRoute("GET", "/Backend_Parque/obtener-anuncios", "obtenerAnuncios");
 
 
 

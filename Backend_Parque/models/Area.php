@@ -6,19 +6,17 @@ class Area {
     public $nombre;
     public $tipoArea;
     public $precio;
-    public $estado;
     public $capacidad;
     public $horaInicio;
     public $horaFin;
     public $descripcion;
     
 
-    public function __construct($id,$tipoArea,$nombre,$precio,$estado,$capacidad,$horaInicio,$horaFin,$descripcion) {
+    public function __construct($id,$tipoArea,$nombre,$precio,$capacidad,$horaInicio,$horaFin,$descripcion) {
         $this->idArea = $id;   
         $this->tipoArea = $tipoArea;   
         $this->nombre = $nombre;   
         $this->precio = $precio;   
-        $this->estado = $estado;   
         $this->capacidad = $capacidad;   
         $this->horaInicio = $horaInicio;   
         $this->horaFin = $horaFin;   
@@ -35,10 +33,6 @@ class Area {
 
     public function obtenerPrecio(){
         return $this->precio;
-    }
-
-    public function obtenerEstado(){
-        return $this->estado;
     }
 
     public function obtenerCapacidad(){

@@ -5,20 +5,14 @@ class Anuncio {
     public $idAnuncio;
     public $titulo;
     public $descripcion;
-    public $fecha_inicio;
-    public $fecha_fin;
-    public $idEmpleado;
-    public $idArea;
-
-
-    public function __construct($id,$titulo,$descripcion,$fecha_inicio,$fecha_fin,$idEmpleado,$idArea) {
-        $this->idAnuncio = $id;   
+    public $fechaInicio;
+    public $fechaFin;
+    
+    public function __construct($titulo,$descripcion,$fecha_inicio,$fecha_fin) {
         $this->titulo = $titulo;   
         $this->descripcion = $descripcion;   
-        $this->fecha_inicio = $fecha_inicio;   
-        $this->fecha_fin = $fecha_fin;   
-        $this->idEmpleado = $idEmpleado;   
-        $this->idArea = $idArea;   
+        $this->fechaInicio = $fecha_inicio;   
+        $this->fechaFin = $fecha_fin; 
     }
 
 
@@ -35,19 +29,11 @@ class Anuncio {
     }
 
     public function obtenerFechaInicio() {
-        return $this->fecha_inicio;
+        return $this->fechaInicio;
     }
 
     public function obtenerFechaFin() {
-        return $this->fecha_fin;
-    }
-
-    public function obtenerIdEmpleado() {
-        return $this->idEmpleado;
-    }
-
-    public function obtenerIdArea() {
-        return $this->idArea;
+        return $this->fechaFin;
     }
 
 }

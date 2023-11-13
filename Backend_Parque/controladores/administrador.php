@@ -3,6 +3,8 @@
 require './models/Empleado.php';
 require './models/Cliente.php';
 require './models/Area.php';
+require './models/Rol.php';
+require './models/TipoArea.php';
 
 function validarCredenciales($bd, $usuario, $contrasenia) {
 
@@ -95,7 +97,7 @@ function obtenerEmpleados($bd){
 function obtenerClientes($bd){
     
     $tabla = 'cliente';
-    $sql = "SELECT cliente.idCliente, cliente.nit, cliente.nombre AS nombre, tipoCliente.nombre AS tipoCliente, cliente.estadoSuscripcion, cliente.fechaInicioPago, cliente.direccion
+    $sql = "SELECT cliente.idCliente, cliente.nit, cliente.nombre AS nombre, tipoCliente.nombre AS tipoCliente, cliente.direccion
     FROM $tabla
     JOIN tipoCliente ON cliente.tipoCliente = tipoCliente.idTipoCliente;";
     
@@ -108,7 +110,7 @@ function obtenerClientes($bd){
 
 
     foreach ($result as $row) {
-        $cliente = new Cliente($row->idCliente, $row->nombre,$row->nit, $row->estadoSuscripcion, $row->fechaInicioPago,$row->tipoCliente,$row->direccion);
+        $cliente = new Cliente($row->idCliente, $row->nombre,$row->nit,$row->tipoCliente,$row->direccion);
         $clientes[] = $cliente;
     }
 
@@ -120,7 +122,7 @@ function obtenerClientes($bd){
 function obtenerAreas($bd){
     
     $tabla = 'area';
-    $sql = "SELECT area.idArea, area.tipoArea, area.nombre AS nombre, area.precio, area.estado, area.capacidad, area.horaInicio, area.horaFin, area.descripcion,
+    $sql = "SELECT area.idArea, area.tipoArea, area.nombre AS nombre, area.precio, area.capacidad, area.horaInicio, area.horaFin, area.descripcion,
     tipoArea.nombre AS tipoArea
     FROM $tabla
     INNER JOIN tipoArea ON area.tipoArea = tipoArea.idTipoArea;";
@@ -132,14 +134,167 @@ function obtenerAreas($bd){
 
     $areas = array();
 
-
     foreach ($result as $row) {
         
-        $area = new Area($row->idArea, $row->tipoArea,$row->nombre,$row->precio,$row->estado,$row->capacidad,$row->horaInicio,$row->horaFin,$row->descripcion);
+        $area = new Area($row->idArea, $row->tipoArea,$row->nombre,$row->precio,$row->capacidad,$row->horaInicio,$row->horaFin,$row->descripcion);
         $areas[] = $area;
     }
 
-    return $areas;
+    return $areas;   
+
+}
+
+
+function obtenerRoles($bd){
+    
+    $tabla = 'rol';
+    $sql = "SELECT id,nombre FROM $tabla";
+    $stmt = $bd->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $roles = array();
+
+    foreach ($result as $row) {
+        $rol = new Rol($row->id, $row->nombre);
+        $roles[] = $rol;
+    }
+
+    return $roles;
+ 
+}
+
+function areaExiste($bd, $nombre) {
+    $tabla = 'area';
+    $sql = "SELECT COUNT(*) FROM $tabla WHERE nombre = :nombre";
+    $stmt = $bd->prepare($sql);
+    $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+    $stmt->execute();
+
+    // Obtener el número de filas que coinciden con la consulta
+    $numeroFilas = $stmt->fetchColumn();
+
+    if($numeroFilas>0){
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
+function crearArea($bd,$tipoArea,$nombre,$precio,$capacidad,$horaInicio,$horaFin,$descripcion){
+    $tabla = 'area';
+    $sql = "INSERT INTO $tabla (tipoArea,nombre,precio,capacidad,horaInicio,horaFin,descripcion) VALUES (:tipoArea,:nombre,:precio,:capacidad,:horaInicio,:horaFin,:descripcion)";
+    $stmt = $bd->prepare($sql);
+    $stmt->bindParam(':tipoArea', $tipoArea, PDO::PARAM_INT);
+    $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+    $stmt->bindParam(':precio', $precio, PDO::PARAM_STR);
+    $stmt->bindParam(':capacidad', $capacidad, PDO::PARAM_INT);
+    $stmt->bindParam(':horaInicio', $horaInicio, PDO::PARAM_STR);
+    $stmt->bindParam(':horaFin', $horaFin, PDO::PARAM_STR);
+    $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+    
+    $stmt->execute();
+
+    if ($stmt) {
+        return true;
+    } else {
+        return false;
+    }   
+}
+
+
+function tipoAreaExiste($bd, $nombre) {
+    $tabla = 'tipoArea';
+    $sql = "SELECT COUNT(*) FROM $tabla WHERE nombre = :nombre";
+    $stmt = $bd->prepare($sql);
+    $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+    $stmt->execute();
+
+    // Obtener el número de filas que coinciden con la consulta
+    $numeroFilas = $stmt->fetchColumn();
+
+    if($numeroFilas>0){
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
+function crearTipoDeArea($bd,$nombre){
+    $tabla = 'tipoArea';
+    $sql = "INSERT INTO $tabla (nombre) VALUES (:nombre)";
+    $stmt = $bd->prepare($sql);    
+    $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);   
+    $stmt->execute();
+
+    if ($stmt) {
+        return true;
+    } else {
+        return false;
+    }   
+}
+
+
+function crearAnuncioAdmin($bd,$titulo,$descripcion,$fechaInicio,$fechaFin){
+    $tabla = 'anuncio';
+    $sql = "INSERT INTO $tabla (titulo,descripcion,fechaInicio,fechaFin) VALUES (:titulo,:descripcion,:fechaInicio,:fechaFin)";
+    $stmt = $bd->prepare($sql);
+    $stmt->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+    $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+    $stmt->bindParam(':fechaInicio', $fechaInicio, PDO::PARAM_STR);
+    $stmt->bindParam(':fechaFin', $fechaFin, PDO::PARAM_STR);
+        
+    $stmt->execute();
+
+    if ($stmt) {
+        return true;
+    } else {
+        return false;
+    }   
+}
+
+function obtenerAnuncios($bd){
+    
+    $tabla = 'anuncio';
+    $sql = "SELECT titulo, descripcion, fechaInicio, fechaFin ,
+    FROM $tabla";
+    
+    $stmt = $bd->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $anuncios = array();   
+
+    foreach ($result as $row) {
+        $anuncio = new Anuncio($row->titulo, $row->descripcion,$row->fechaInicio,$row->fechaFin);
+        $anuncios[] = $anuncio;
+    }
+
+    return $anuncios;
+    
+}
+
+function obtenerTiposAreaAdmin($bd){
+    
+    $tabla = 'tipoArea';
+    $sql = "SELECT idTipoArea, nombre 
+    FROM $tabla";
+    
+    $stmt = $bd->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $tiposArea = array();   
+
+    foreach ($result as $row) {
+        $tipo = new TipoArea($row->idTipoArea, $row->nombre);
+        $tiposArea[] = $tipo;
+    }
+
+    return $tiposArea;
     
 
 }
+

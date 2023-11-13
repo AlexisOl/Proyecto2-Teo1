@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Area } from 'src/app/models/area';
 import { AdministradorService } from 'src/app/services/administrador/administrador.service';
 
@@ -11,7 +12,7 @@ export class AreasComponent {
 
   areas:Area[];
 
-  constructor(private administradorService:AdministradorService){}
+  constructor(private administradorService:AdministradorService,private router:Router){}
 
   ngOnInit(): void {
     this.obtenerAreas();
@@ -21,6 +22,10 @@ export class AreasComponent {
     this.administradorService.obtenerAreas().subscribe(data=>{
       this.areas = data;
     });
+  }
+
+  public crearArea(){
+    this.router.navigate(['administrador/crear-area']);
   }
 
 }

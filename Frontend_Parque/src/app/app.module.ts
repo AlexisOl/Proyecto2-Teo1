@@ -31,6 +31,7 @@ import { EmpleadosComponent } from './vistasAdministrador/empleados/empleados.co
 import { AreasComponent } from './vistasAdministrador/areas/areas.component';
 import { HeaderAdminComponent } from './vistasAdministrador/header-admin/header-admin.component';
 import { CrearEmpleadoComponent } from './vistasAdministrador/empleados/crear-empleado/crear-empleado.component';
+import { CrearAreaComponent } from './vistasAdministrador/areas/crear-area/crear-area.component';
 
 
 
@@ -52,7 +53,8 @@ import { CrearEmpleadoComponent } from './vistasAdministrador/empleados/crear-em
     EmpleadosComponent,
     AreasComponent,
     HeaderAdminComponent,
-    CrearEmpleadoComponent
+    CrearEmpleadoComponent,
+    CrearAreaComponent,
   ],
   imports: [
     BrowserModule,

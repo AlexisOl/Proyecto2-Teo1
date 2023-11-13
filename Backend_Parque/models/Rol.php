@@ -6,7 +6,8 @@ class Rol {
     public $nombre_rol;
 
     // Constructor de la clase
-    public function __construct($nombre) {
+    public function __construct($id,$nombre) {
+        $this->idRol = $id;   
         $this->nombre_rol = $nombre;   
     }
 

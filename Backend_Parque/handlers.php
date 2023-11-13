@@ -88,6 +88,139 @@ function obtenerAreasAdmin() {
 
 }
 
+function obtenerRolesAdmin() {
+    
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    // Invocar a la función de consulta SQL
+    $result = obtenerRoles($bd);
+    //retornar lo hallado
+    echo json_encode($result);
+
+}
+
+function obtenerTiposArea() {
+    
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    // Invocar a la función de consulta SQL
+    $result = obtenerTiposAreaAdmin($bd);
+    //retornar lo hallado
+    echo json_encode($result);
+
+}
+
+function validarUsuarioAdmin() {
+    
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    //obtener usuario
+    $usuario = $_GET['usuario'];
+
+    // Invocar a la función de consulta SQL
+    $result = usuarioExiste($bd,$usuario);
+    //retornar lo hallado
+    echo json_encode($result);
+
+}
+
+function crearAreaAdmin(){
+
+     //conexion
+      $bd = include_once "conexionDB.php";
+ 
+      
+      $data = json_decode(file_get_contents("php://input"), true);
+
+      $tipoArea = $data['tipoArea'];
+      $nombre = $data['nombre'];
+      $precio = $data['precio'];
+      $capacidad = $data['capacidad'];
+      $horaInicio = $data['horaInicio'];
+      $horaFin = $data['horaFin'];
+      $descripcion = $data['descripcion'];
+      // Invocar a la función de consulta SQL
+      $result = crearArea($bd,$tipoArea,$nombre,$precio,$capacidad,$horaInicio,$horaFin,$descripcion);
+  
+      //retornar lo hallado
+      echo json_encode($result);
+    
+}
+
+function validarNombreAreaAdmin(){
+
+    //conexion
+     $bd = include_once "conexionDB.php";
+
+     
+    $nombre = $_GET['nombre'];
+    
+     // Invocar a la función de consulta SQL
+     $result = areaExiste($bd,$nombre);
+ 
+     //retornar lo hallado
+     echo json_encode($result);
+   
+}
+
+function validarNombreTipoArea(){
+
+    //conexion
+     $bd = include_once "conexionDB.php";
+
+     
+    $nombre = $_GET['nombre'];
+    
+     // Invocar a la función de consulta SQL
+     $result = tipoAreaExiste($bd,$nombre);
+ 
+     //retornar lo hallado
+     echo json_encode($result);
+   
+}
+
+function crearTipoAreaAdmin(){
+
+    //conexion
+     $bd = include_once "conexionDB.php";
+
+     
+     $data = json_decode(file_get_contents("php://input"), true);
+     
+     $nombre = $data['nombre'];
+     
+     // Invocar a la función de consulta SQL
+     $result = crearTipoDeArea($bd,$nombre);
+ 
+     //retornar lo hallado
+     echo json_encode($result);
+   
+}
+
+
+function crearAnuncio(){
+
+    //conexion
+     $bd = include_once "conexionDB.php";
+
+     
+     $data = json_decode(file_get_contents("php://input"), true);
+     
+     $titulo = $data['titulo'];
+     $descripcion = $data['descripcion'];
+     $fechaInicio = $data['fechaInicio'];
+     $fechaFin = $data['fechaFin'];
+
+     // Invocar a la función de consulta SQL
+     $result = crearAnuncioAdmin($bd,$titulo,$descripcion,$fechaInicio,$fechaFin);
+ 
+     //retornar lo hallado
+     echo json_encode($result);
+   
+}
 
 
 ?>

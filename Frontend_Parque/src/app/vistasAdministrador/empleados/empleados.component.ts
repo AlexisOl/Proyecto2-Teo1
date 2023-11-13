@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { usuarios } from 'src/app/models/usuarios';
 import { AdministradorService } from 'src/app/services/administrador/administrador.service';
 
@@ -11,7 +12,7 @@ export class EmpleadosComponent {
 
   usuarios:usuarios[];
 
-  constructor(private administradorService:AdministradorService){}
+  constructor(private administradorService:AdministradorService,private router:Router){}
 
   ngOnInit(): void {
     this.obtenerEmpleados();
@@ -23,7 +24,9 @@ export class EmpleadosComponent {
     });
   }
 
-
+  crearEmpleado(){
+    this.router.navigate(['administrador/crear-empleado']);
+  }
 
 }
 
