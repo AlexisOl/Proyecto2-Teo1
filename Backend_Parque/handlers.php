@@ -76,16 +76,27 @@ function obtenerClientesAdmin() {
 
 }
 
-function obtenerAreasAdmin() {
+function obtenerAreaAdmin() {
     
     //conexion
     $bd = include_once "conexionDB.php";
+    
+    $id = $_GET['id'];
 
     // Invocar a la función de consulta SQL
-    $result = obtenerAreas($bd);
+    $result = obtenerAreaPorId($bd,$id);
     //retornar lo hallado
     echo json_encode($result);
 
+}
+
+function obtenerAreasAdmin(){
+    //conexion
+    $bd = include_once "conexionDB.php";
+    
+    $result = obtenerAreas($bd);
+    
+    echo json_encode($result);
 }
 
 function obtenerRolesAdmin() {

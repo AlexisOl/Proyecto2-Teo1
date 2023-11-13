@@ -12,6 +12,9 @@ import { EmpleadosComponent } from './vistasAdministrador/empleados/empleados.co
 import { ComentariosComponent } from './vistasAdministrador/comentarios/comentarios.component';
 import { CrearEmpleadoComponent } from './vistasAdministrador/empleados/crear-empleado/crear-empleado.component';
 import { CrearAreaComponent } from './vistasAdministrador/areas/crear-area/crear-area.component';
+import { CrearTipoAreaComponent } from './vistasAdministrador/areas/crear-tipo-area/crear-tipo-area.component';
+import { AnunciosComponent } from './vistasAdministrador/anuncios/anuncios.component';
+import { EditarAreaComponent } from './vistasAdministrador/areas/editar-area/editar-area.component';
 
 
 const routes: Routes = [
@@ -21,11 +24,14 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'administrador', component: PaginaPrincipalAdminstradorComponent,canActivate: [AdminGuard]},
   {path: 'administrador/areas', component: AreasComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/editar-area', component: EditarAreaComponent,canActivate: [AdminGuard]},
   {path: 'administrador/crear-area', component: CrearAreaComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/crear-tipo-area', component: CrearTipoAreaComponent,canActivate: [AdminGuard]},
   {path: 'administrador/empleados', component: EmpleadosComponent,canActivate: [AdminGuard]},
   {path: 'administrador/crear-empleado', component: CrearEmpleadoComponent,canActivate: [AdminGuard]},
   //{path: 'administrador/editar-empleado', component: EmpleadosComponent,canActivate: [AdminGuard]},
   {path: 'administrador/clientes', component: ClientesComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/anuncios', component: AnunciosComponent,canActivate: [AdminGuard]},
   {path: 'administrador/comentarios', component: ComentariosComponent,canActivate: [AdminGuard]},
 
   // path para lo de rececpion

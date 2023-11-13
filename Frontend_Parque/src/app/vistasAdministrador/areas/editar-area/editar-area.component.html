@@ -1,0 +1,126 @@
+<app-header-admin></app-header-admin>
+
+
+<div class="container mt-5 mb-5">
+  
+  <form class="form-container" #f = "ngForm" >
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title class="text-center">Editar área</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <hr />
+        <div class="row">
+          <div class="col-md-6">
+            <label [for]="area.nombre" class="mt-5 d-flex ">
+              Nombre del area
+            </label>
+            <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="Ingresa el nombre del área"
+            name="nombre"
+            [(ngModel)]="area.nombre"
+            value={{area.nombre}}
+          />
+          </div>
+          <div class="col-md-6">
+            <label [for]="area.capacidad" class="mt-5 d-flex">
+              Capacidad
+            </label>
+            <input
+              type="number"
+              min="1"
+              class="form-control mt-2"
+              placeholder="Ingresa la capacidad del área"
+              name="capacidad"              
+              [(ngModel)]="area.capacidad"
+              value={{area.capacidad}}
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mt-4">
+            <label class="mt-1 d-flex ">
+              Tipo de área
+            </label>
+            <mat-form-field class="mt-2">
+              <mat-label>Seleccionar</mat-label>
+              <select matNativeControl [(ngModel)]="area.tipoArea" [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let tipo of tiposAreas" [value]="tipo.idTipoArea">{{ tipo.nombre }}</option>
+              </select>
+            </mat-form-field>
+
+
+          </div>
+          <div class="col-md-6 mt-4">
+
+            <label [for]="area.precio" class="d-flex">
+              Precio
+            </label>
+            <input
+              type="number"
+              min="1"
+              class="form-control mt-2"
+              placeholder="Ingresa el precio de alquiler"
+              name="precio"
+              [(ngModel)]="area.precio"
+              value={{area.precio}}
+            />
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <label [for]="area.horaInicio" class="d-flex ">
+              Hora de apertura
+            </label>
+            <input
+            type="time"
+            class="form-control mt-2"
+            placeholder="Ingresa el nombre del área"
+            name="horaA"
+            [(ngModel)]="area.horaInicio"
+            value={{area.horaInicio}}
+          />
+          </div>
+          <div class="col-md-6">
+            <label [for]="area.horaFin" class="d-flex">
+              Hora de cierre
+            </label>
+            <input
+              type="time"
+              class="form-control mt-2"
+              placeholder="Ingresa la capacidad del área"
+              name="horaC"              
+              [(ngModel)]="area.horaFin"
+              value={{area.horaFin}}
+            />
+          </div>
+        </div>
+
+
+        <div class="row mt-4">
+          <label [for]="area.descripcion" class="d-flex mb-2">
+            Descripción
+          </label>
+          <mat-form-field class="example-full-width">
+            <mat-label>Ingresa la descripción del área</mat-label>
+            <textarea matInput [(ngModel)]="area.descripcion" [ngModelOptions]="{standalone: true}">{{area.descripcion}}</textarea>
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-success"  >Registrar</button>
+      </div>
+
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

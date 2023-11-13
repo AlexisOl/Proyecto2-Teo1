@@ -298,3 +298,24 @@ function obtenerTiposAreaAdmin($bd){
 
 }
 
+function obtenerAreaPorId($bd,$id){
+    
+    $tabla = 'area';
+    $sql = "SELECT * FROM $tabla WHERE idArea = :id";
+    
+    $stmt = $bd->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_OBJ);
+    
+    // Verificamos si se encontró algún resultado
+    if ($result) {
+        $area = new Area($result->idArea, $result->tipoArea, $result->nombre, $result->precio, $result->capacidad, $result->horaInicio, $result->horaFin, $result->descripcion);
+        return $area;
+    } else {
+        // No se encontró ningún resultado con ese ID
+        return null;
+    }
+    
+
+}

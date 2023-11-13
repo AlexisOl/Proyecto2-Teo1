@@ -32,6 +32,12 @@ import { AreasComponent } from './vistasAdministrador/areas/areas.component';
 import { HeaderAdminComponent } from './vistasAdministrador/header-admin/header-admin.component';
 import { CrearEmpleadoComponent } from './vistasAdministrador/empleados/crear-empleado/crear-empleado.component';
 import { CrearAreaComponent } from './vistasAdministrador/areas/crear-area/crear-area.component';
+import { CrearTipoAreaComponent } from './vistasAdministrador/areas/crear-tipo-area/crear-tipo-area.component';
+import { AnunciosComponent } from './vistasAdministrador/anuncios/anuncios.component';
+import { CrearAnuncioComponent } from './vistasAdministrador/anuncios/crear-anuncio/crear-anuncio.component';
+import { EditarAnuncioComponent } from './vistasAdministrador/anuncios/editar-anuncio/editar-anuncio.component';
+import { EditarEmpleadoComponent } from './vistasAdministrador/empleados/editar-empleado/editar-empleado.component';
+import { EditarAreaComponent } from './vistasAdministrador/areas/editar-area/editar-area.component';
 
 
 
@@ -55,6 +61,12 @@ import { CrearAreaComponent } from './vistasAdministrador/areas/crear-area/crear
     HeaderAdminComponent,
     CrearEmpleadoComponent,
     CrearAreaComponent,
+    CrearTipoAreaComponent,
+    AnunciosComponent,
+    CrearAnuncioComponent,
+    EditarAnuncioComponent,
+    EditarEmpleadoComponent,
+    EditarAreaComponent
   ],
   imports: [
     BrowserModule,

@@ -28,4 +28,13 @@ export class AreasComponent {
     this.router.navigate(['administrador/crear-area']);
   }
 
+  public crearTipoArea(){
+    this.router.navigate(['administrador/crear-tipo-area']);
+  }
+
+  public editarArea(id:any){
+    var id:any = id;
+    this.router.navigate(['administrador/editar-area'],id);
+  }
+
 }

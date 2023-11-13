@@ -76,10 +76,24 @@ public validarTipoAreaUnica(nombre:any): Observable<boolean> {
       
 }
 
+public crearTipoArea(nombre:any):Observable<boolean>{
+
+  return this.http.post<boolean>(`${baseURL}/crear-tipo-area`,nombre);
+
+}
+
 public crearArea(area:any):Observable<any>{
 
   return this.http.post<any>(`${baseURL}/crear-area`,area);
 
+}
+
+public obtenerAreaId(id:any): Observable<Area> {
+
+  const params = new HttpParams().set('id', id);
+
+  return this.http.get<Area>(`${baseURL}/obtener-area-admin`, {params} );
+      
 }
 
 

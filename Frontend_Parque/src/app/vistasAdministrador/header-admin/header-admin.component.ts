@@ -20,6 +20,9 @@ export class HeaderAdminComponent {
   irClientes() {
     this.rutas.navigate(['administrador/clientes']);
   }
+  irAnuncios() {
+    this.rutas.navigate(['administrador/anuncios']);
+  }
   irComentarios() {
     this.rutas.navigate(['administrador/comentarios']);
   }

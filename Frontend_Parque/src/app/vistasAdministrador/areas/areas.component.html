@@ -5,7 +5,7 @@
     <h2 class="text-center mt-5" style="color: aliceblue;" >Áreas dentro del parque</h2>
     <div>
       <button type="button" class="btn btn-success btn-sm mb-3" (click)="crearArea()" >Agregar área</button>
-      <button type="button" class="btn btn-success btn-sm mb-3 ms-3">Agregar tipo de área</button>
+      <button type="button" class="btn btn-success btn-sm mb-3 ms-3" (click)="crearTipoArea()" >Agregar tipo de área</button>
     </div>
     <table class="table table-striped table-bordered">
       <thead class="table table-dark">
@@ -32,7 +32,7 @@
               <td>{{area.horaFin}}</td>
               <!--<td>{{area.descripcion}}</td>-->
               <td>
-                <button type="button" class="btn btn-outline-primary btn-sm ">Editar</button>
+                <button type="button" class="btn btn-outline-primary btn-sm " (click)="editarArea(area.idArea)">Editar</button>
               </td> 
           </tr>
       </tbody>
