@@ -13,9 +13,9 @@ import Swal from 'sweetalert2';
 export class CrearAreaComponent {
 
   nombre:string;
-  capacidad:number;
+  capacidad:number = 1;
   tipoArea:number;
-  precio:number;
+  precio:number = 0;
   horaApertura:string;
   horaCierra:string;
   descripcion:string;
@@ -35,10 +35,10 @@ export class CrearAreaComponent {
   }
 
   public crearArea(){
-   
-    if(this.nombre && this.capacidad && this.tipoArea && this.precio && this.horaApertura && this.horaCierra && this.descripcion){
+
+    if(this.nombre && this.tipoArea && this.horaApertura && this.horaCierra && this.descripcion){
       
-  
+      
       if (this.capacidad <= 0) {
         Swal.fire({ title: 'La capacidad debe ser mayor a 0', icon: 'error' });
         return;
@@ -81,7 +81,8 @@ export class CrearAreaComponent {
       });
   
     }else{
-
+      
+      
       Swal.fire({title:'Debes ingresar todos los campos',icon:'error'});
       
     }

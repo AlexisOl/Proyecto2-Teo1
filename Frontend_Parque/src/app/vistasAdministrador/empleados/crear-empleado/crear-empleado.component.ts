@@ -47,15 +47,17 @@ export class CrearEmpleadoComponent {
             rol: this.tipoEmpleado
           };
 
-          this.administradorService.crearEmpleado(usuario).subscribe(confirmacion=>{
-            if(confirmacion){
-              Swal.fire({title:'Empleado agregado exitosamente',icon:'success'}).then(()=>{
-                this.router.navigate(['administrador/empleados']);
-              });
-            }else{
-              Swal.fire({title:'No pudo agregarse el empleado',icon:'error'});    
+          this.administradorService.crearEmpleado(usuario).subscribe(
+            (response) => {
+              if (response.success) {
+                Swal.fire({title:'Empleado agregado exitosamente',icon:'success'}).then(()=>{
+                  this.router.navigate(['administrador/empleados']);
+                });
+              } else {
+                Swal.fire({title:'No pudo agregarse el empleado',icon:'error'});    
+              }
             }
-          });
+          );
         }
 
       });

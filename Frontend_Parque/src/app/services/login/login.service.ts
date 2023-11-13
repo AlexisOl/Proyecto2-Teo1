@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { usuarios } from 'src/app/models/usuarios';
 
-const baseURL ="http://localhost/Backend_Parque";
+const baseURL2 ="http://localhost/Backend_Parque/index.php";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class LoginService {
 
   public login(loginData: any): Observable<any> {
 
-    return this.http.post<any>(`${baseURL}/login`, loginData);
+    return this.http.post<any>(`${baseURL2}?login=1`, loginData);
       
   }
 
