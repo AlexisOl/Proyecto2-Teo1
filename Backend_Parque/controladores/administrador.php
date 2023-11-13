@@ -43,9 +43,10 @@ function insertarEmpleado($bd, $nombre, $usuario, $contrasenia, $rol) {
     $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
     $stmt->bindParam(':contrasenia', $contrasenia, PDO::PARAM_STR);
     $stmt->bindParam(':rol', $rol, PDO::PARAM_INT);
-    $stmt->execute();
 
-    if ($stmt) {
+    $exito = $stmt->execute();
+
+    if ($exito) {
         return true;
     } else {
         return false;
@@ -194,13 +195,13 @@ function crearArea($bd,$tipoArea,$nombre,$precio,$capacidad,$horaInicio,$horaFin
     $stmt->bindParam(':horaFin', $horaFin, PDO::PARAM_STR);
     $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
     
-    $stmt->execute();
+    $exito = $stmt->execute();
 
-    if ($stmt) {
+    if ($exito) {
         return true;
     } else {
         return false;
-    }   
+    } 
 }
 
 
@@ -227,13 +228,13 @@ function crearTipoDeArea($bd,$nombre){
     $sql = "INSERT INTO $tabla (nombre) VALUES (:nombre)";
     $stmt = $bd->prepare($sql);    
     $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);   
-    $stmt->execute();
+    $exito = $stmt->execute();
 
-    if ($stmt) {
+    if ($exito) {
         return true;
     } else {
         return false;
-    }   
+    }  
 }
 
 
@@ -246,13 +247,13 @@ function crearAnuncioAdmin($bd,$titulo,$descripcion,$fechaInicio,$fechaFin){
     $stmt->bindParam(':fechaInicio', $fechaInicio, PDO::PARAM_STR);
     $stmt->bindParam(':fechaFin', $fechaFin, PDO::PARAM_STR);
         
-    $stmt->execute();
+    $exito = $stmt->execute();
 
-    if ($stmt) {
+    if ($exito) {
         return true;
     } else {
         return false;
-    }   
+    } 
 }
 
 function obtenerAnuncios($bd){

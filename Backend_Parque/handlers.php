@@ -31,6 +31,7 @@ function registrarEmpleado() {
     //Decodificar si es necesario
     $data = json_decode(file_get_contents("php://input"), true);
 
+    
     //obtener usuario
     $usuario = $data['usuario'];
 
@@ -48,7 +49,8 @@ function registrarEmpleado() {
 
     $result = insertarEmpleado($bd, $nombre, $usuario, $contrasenia, $rol);
     //retornar lo hallado
-    echo json_encode($result);
+    
+    echo json_encode(["success" => $result]);
 
 }
 
@@ -207,7 +209,7 @@ function crearTipoAreaAdmin(){
      $result = crearTipoDeArea($bd,$nombre);
  
      //retornar lo hallado
-     echo json_encode($result);
+     echo json_encode(["success" => $result]);
    
 }
 
