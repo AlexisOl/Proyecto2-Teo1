@@ -16,7 +16,7 @@ class Router {
     public function route() {
         $requestMethod = $_SERVER['REQUEST_METHOD'];
         $requestPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
+        var_dump($requestPath);
         foreach ($this->routes as $route) {
             if ($route['method'] === $requestMethod && $route['path'] === $requestPath) {
                 $handler = $route['handler'];

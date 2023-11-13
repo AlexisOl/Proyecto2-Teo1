@@ -1,10 +1,10 @@
 <?php
 
-require './models/Empleado.php';
-require './models/Cliente.php';
-require './models/Area.php';
-require './models/Rol.php';
-require './models/TipoArea.php';
+    require './models/Empleado.php';
+    require './models/Cliente.php';
+    require './models/Area.php';
+    require './models/Rol.php';
+    require './models/TipoArea.php';
 
 function validarCredenciales($bd, $usuario, $contrasenia) {
 

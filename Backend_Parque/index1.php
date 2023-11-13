@@ -81,3 +81,4 @@ if ($_GET['action'] === 'getColaboradores' && $_SERVER["REQUEST_METHOD"] === "GE
 }
 
 ?>
+

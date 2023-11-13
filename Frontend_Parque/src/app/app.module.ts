@@ -24,9 +24,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { ReservacionesEmpleadosComponent } from './vistasRecepcion/reservaciones-empleados/reservaciones-empleados.component';
 import { ClienteIngresoComponent } from './vistasRecepcion/cliente-ingreso/cliente-ingreso.component';
 import { MatCardModule } from '@angular/material/card';
-import { PaginaPrincipalAdminstradorComponent } from './vistasAdministrador/pagina-principal-adminstrador/pagina-principal-adminstrador.component';
-import { ClientesComponent } from './vistasAdministrador/clientes/clientes.component';
-import { ComentariosComponent } from './vistasAdministrador/comentarios/comentarios.component';
+import { VerAgendaComponent } from './vistasRecepcion/ver-agenda/ver-agenda.component';
 import { EmpleadosComponent } from './vistasAdministrador/empleados/empleados.component';
 import { AreasComponent } from './vistasAdministrador/areas/areas.component';
 import { HeaderAdminComponent } from './vistasAdministrador/header-admin/header-admin.component';
@@ -39,6 +37,9 @@ import { EditarAnuncioComponent } from './vistasAdministrador/anuncios/editar-an
 import { EditarEmpleadoComponent } from './vistasAdministrador/empleados/editar-empleado/editar-empleado.component';
 import { EditarAreaComponent } from './vistasAdministrador/areas/editar-area/editar-area.component';
 
+import { ClientesComponent } from './vistasAdministrador/clientes/clientes.component';
+import { ComentariosComponent } from './vistasAdministrador/comentarios/comentarios.component';
+import { PaginaPrincipalAdminstradorComponent } from './vistasAdministrador/pagina-principal-adminstrador/pagina-principal-adminstrador.component';
 
 
 @NgModule({
@@ -53,9 +54,8 @@ import { EditarAreaComponent } from './vistasAdministrador/areas/editar-area/edi
     AlquilerEmpleadoComponent,
     ReservacionesEmpleadosComponent,
     ClienteIngresoComponent,
-    PaginaPrincipalAdminstradorComponent,
-    ClientesComponent,
-    ComentariosComponent,
+    VerAgendaComponent,
+    HeaderAdminComponent,
     EmpleadosComponent,
     AreasComponent,
     HeaderAdminComponent,
@@ -66,7 +66,9 @@ import { EditarAreaComponent } from './vistasAdministrador/areas/editar-area/edi
     CrearAnuncioComponent,
     EditarAnuncioComponent,
     EditarEmpleadoComponent,
-    EditarAreaComponent
+    EditarAreaComponent,
+    ClientesComponent,
+    PaginaPrincipalAdminstradorComponent
   ],
   imports: [
     BrowserModule,
