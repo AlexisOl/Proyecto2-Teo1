@@ -88,6 +88,12 @@ function obtenerAreasAdmin() {
 
 }
 
+function prueba(){
+   $mensaje ="hola";
+   $result = verMensaje($mensaje);
+   echo json_encode($result);
+}
+
 
 
 ?>
