@@ -2,7 +2,7 @@
 
   <!--AQUI EL INGRESO DE TABLA-->
   <div class="container">
-    <h1 style="color: aliceblue;">Recopilacion de Seleccion</h1>
+    <h1 style="color: aliceblue;">Alquileres Realizados</h1>
   </div>
   <table class="table table-striped">
     <thead>
@@ -26,3 +26,59 @@
       </tr>
     </tbody>
   </table>
+  <!--PARA RESERVACIONES-->
+  <div class="container">
+    <h1 style="color: aliceblue;">Reservaciones Realizados</h1>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nit cliente</th>
+        <th scope="col">Id Area</th>
+        <th scope="col">Id Empelado</th>
+        <th scope="col">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let clientes of reservaciones; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          {{ clientes.nitCliente }}
+        </td>
+        <td>{{ clientes.idArea }}</td>
+        <td>{{ clientes.idEmpleado }}</td>
+        <td>{{ clientes.fecha_reserva }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!--PARA RESERVACIONES-->
+  <div class="container">
+    <h1 style="color: aliceblue;">Reservaciones Realizados</h1>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">id Area</th>
+        <th scope="col">precio Parcial</th>
+        <th scope="col">Horas</th>
+        <th scope="col">Factura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let clientes of usuarios; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          {{ clientes.nombre }}
+        </td>
+        <td>{{ clientes.contrasenia }}</td>
+        <td>{{ clientes.usuario }}</td>
+        <td>{{ clientes.rol }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+

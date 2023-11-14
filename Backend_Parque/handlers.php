@@ -1,7 +1,7 @@
 <?php
 
 include_once "./controladores/administrador.php";
-
+include_once "./controladores/administrador.php";
 
 function login() {
     //conexion
@@ -185,7 +185,7 @@ function validarNombreTipoArea(){
      $bd = include_once "conexionDB.php";
 
      
-    $nombre = $_GET['nombre'];
+     $nombre = $_GET['nombre'];
     
      // Invocar a la función de consulta SQL
      $result = tipoAreaExiste($bd,$nombre);
@@ -234,6 +234,18 @@ function crearAnuncioAdmin(){
      //retornar lo hallado
     echo json_encode($result);
    
+}
+///prueba obtener
+
+function obtenerAnuncio() {
+
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    // Invocar a la función de consulta SQL
+    $result = obtenerAnuncios($bd);
+    //retornar lo hallado
+    echo json_encode($result);
 }
 
 function obtenerAnunciosAdmin() {

@@ -14,12 +14,12 @@
         <div class="row">
           <div class="col-md-6">
             <label for="nombre" class="mt-5 d-flex justify-content-center">
-              Nombre de Empelado
+              Nombre del cliente
             </label>
             <input
               type="text"
               class="form-control mt-2"
-              placeholder="Nombre de Empeleado"
+              placeholder="Nombre del cliente"
               name="identificador_prodcuto"
               [(ngModel)]='nombre'
 
@@ -28,12 +28,12 @@
           </div>
           <div class="col-md-6">
             <label for="nombre" class="mt-5 d-flex justify-content-center">
-              nit de Empelado
+              NIT del cliente
             </label>
             <input
               type="text"
               class="form-control mt-2"
-              placeholder="Password de Empelado"
+              placeholder="Ingresa nit"
               name="password"
               [(ngModel)]='nit'
 
@@ -61,12 +61,12 @@
           <div class="col-md-6">
 
             <label for="nombre" class="mt-5 d-flex justify-content-center">
-              Identificador de Sucursal
+              Direccion del cliente
             </label>
             <input
-              type="number"
+              type="text"
               class="form-control mt-2"
-              placeholder="Sucursal de Empelado"
+              placeholder="Direccion"
               name="sucursal"
               [(ngModel)]='ubicacion'
               [min]="1"
@@ -79,7 +79,7 @@
       <mat-card-actions>
         <div class="row">
           <div class="col-md-6">
-        <button mat-raised-button  color="primary" (click)="enviarDatos()">Ingreso</button>
+        <button mat-raised-button  color="primary" (click)="enviarDatos()">Crear</button>
       </div>
 
         </div>

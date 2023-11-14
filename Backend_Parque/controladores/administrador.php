@@ -76,8 +76,10 @@ function usuarioExiste($bd, $usuario) {
 
 }
 
+
+
 function obtenerEmpleados($bd){
-    
+    //AQUI POR QUE NO IBAMOS IGUAL EN EL DB
     $tabla = 'empleado';
     $sql = "SELECT idEmpleado, nombre, usuario, rol FROM $tabla";
     $stmt = $bd->prepare($sql);
@@ -258,6 +260,8 @@ function crearAnuncio($bd,$titulo,$descripcion,$fechaPublicacion,$urlImagen){
     } 
 }
 
+
+//AQUI CAMBIO 
 function obtenerAnuncios($bd){
     
     $tabla = 'anuncio';

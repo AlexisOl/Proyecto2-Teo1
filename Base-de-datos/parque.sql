@@ -1,5 +1,5 @@
 CREATE DATABASE parque;
-
+-- parque2 prueba
 CREATE USER 'administracionParque'@'localhost' IDENTIFIED BY 'Teori@sistemas1';
 
 GRANT ALL PRIVILEGES ON parque.* TO 'administracionParque'@'localhost' WITH GRANT OPTION;
@@ -125,6 +125,9 @@ CREATE TABLE venta(
     descripcion TEXT NOT NULL,
     idFactura INT NOT NULL,
     fecha DATE NOT NULL,
+    -- cambio de venta alexis
+    horainicial INT NOT NULL,
+    horafinal INT NOT NULL,
     PRIMARY KEY(idVenta)
 );
 

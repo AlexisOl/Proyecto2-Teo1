@@ -18,6 +18,7 @@ export class AlquilerEmpleadoComponent implements OnInit {
   datos: any;
   areas:any;
   areasSolicitadas:any=[];
+  areasParaVerificar:any=[];
 
   // elementos a agregar
   binding1:any
@@ -86,9 +87,32 @@ export class AlquilerEmpleadoComponent implements OnInit {
   //FUNCION PARA DETERMINAR MONTO HORAS
 
   DeterminarValoresAreas(){
+  //aqui ver como si es correcto
+
     console.log(this.areasSolicitadas);
+    this.areasSolicitadas.forEach(
+      (verificacion:any) => {
+        console.log(verificacion.idArea, verificacion.fecha);
+
+        this.empleadoServicio.yaHayVentas(verificacion.idArea, verificacion.fecha).subscribe(
+          (ventasEncontradas) => {
+            console.log(ventasEncontradas);
+
+            this.areasParaVerificar = ventasEncontradas
+          }
+        )
+      }
+    )
 
   }
+
+  // funcion para ver los elementos generados
+  verGeneradosMismaFecha(){
+    console.log(this.areasParaVerificar);
+
+  }
+
+
 // solo para ver elementos generales
 verElementosGeneralesAreas(){
   console.log(this.areasSolicitadas);
@@ -116,6 +140,8 @@ verElementosGeneralesAreas(){
       nuevaVenta.montoParcial = generar.preciosParciales;
       nuevaVenta.idFactura = idFactura;
       nuevaVenta.fechaVenta = generar.fecha;
+      nuevaVenta.horainicial = generar.horaInicio;
+      nuevaVenta.horafinal = generar.horaFin;
       console.log(nuevaVenta);
 
       //ahroa mandar elemento
