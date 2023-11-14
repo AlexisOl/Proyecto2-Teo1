@@ -309,3 +309,8 @@ if ($_GET['action'] === 'obtener-empleado-id-admin' && $_SERVER["REQUEST_METHOD"
 
     obtenerEmpleadoIdAdmin();
 }
+
+if ($_GET['action'] === 'obtener-anuncio-id-admin' && $_SERVER["REQUEST_METHOD"] === "GET") {
+
+    obtenerAnuncioIdAdmin();
+}

@@ -35,8 +35,8 @@
     <span>Ingreso Clientes</span>
   </button>
   <span class="example-spacer"></span>
-  <button mat-button [matMenuTriggerFor]="fileMenu">a</button>
+  <button mat-button [matMenuTriggerFor]="fileMenu">{{loginService.getNombreUsuario()}}</button>
   <mat-menu #fileMenu="matMenu">
-    <button  mat-menu-item>Cerrar Sesion</button>
+    <button  mat-menu-item (click)="cerrarSesion()">Cerrar Sesion</button>
   </mat-menu>
 </mat-toolbar>

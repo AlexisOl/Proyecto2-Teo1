@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-header-recepcion',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderRecepcionComponent {
 
 
-  constructor(private rutas:Router) {}
+  constructor(private rutas:Router,public loginService:LoginService) {}
 
   irAlquiler() {
     this.rutas.navigate(['./generalRecepcion/alquiler']);
@@ -26,4 +27,10 @@ export class HeaderRecepcionComponent {
   irVerAgenda() {
     this.rutas.navigate(['./generalRecepcion/verAgenda']);
   }
+
+  public cerrarSesion(){
+    this.loginService.logOut();
+    window.location.reload();
+  }
+
 }

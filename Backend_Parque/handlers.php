@@ -224,14 +224,15 @@ function crearAnuncioAdmin(){
      
      $titulo = $data['titulo'];
      $descripcion = $data['descripcion'];
-     $fechaInicio = $data['fechaInicio'];
-     $fechaFin = $data['fechaFin'];
+     $urlImagen = $data['urlImagen'];
+     $fechaPublicacion = date('Y/m/d');
+     
 
      // Invocar a la función de consulta SQL
-     $result = crearAnuncio($bd,$titulo,$descripcion,$fechaInicio,$fechaFin);
+     $result = crearAnuncio($bd,$titulo,$descripcion,$fechaPublicacion,$urlImagen);
  
      //retornar lo hallado
-     echo json_encode($result);
+    echo json_encode($result);
    
 }
 
@@ -351,11 +352,39 @@ function actualizarContraseniaAdmin(){
 
 function obtenerAnuncioIdAdmin(){
     
+    //conexion
+    $bd = include_once "conexionDB.php";
+    
+    $id = $_GET['id'];
+
+    // Invocar a la función de consulta SQL
+    $result = obtenerAnuncioPorId($bd,$id);
+    //retornar lo hallado
+    echo json_encode($result);
+
 
 }
 
 function actualizarAnuncioAdmin(){
+
+    //conexion
+    $bd = include_once "conexionDB.php";
+     
+    $data = json_decode(file_get_contents("php://input"), true);
     
+    $id = $data['idAnuncio'];
+    $titulo = $data['titulo'];
+    $descripcion = $data['descripcion'];
+  
+    // Invocar a la función de consulta SQL
+    $result = actualizarAnuncio($bd,$titulo,$descripcion,$id);
+
+    //retornar lo hallado
+   echo json_encode($result);
+
+}
+
+function eliminarAnuncioAdmin(){
 
 }
 

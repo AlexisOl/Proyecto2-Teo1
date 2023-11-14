@@ -16,6 +16,8 @@ import { CrearTipoAreaComponent } from './vistasAdministrador/areas/crear-tipo-a
 import { AnunciosComponent } from './vistasAdministrador/anuncios/anuncios.component';
 import { EditarAreaComponent } from './vistasAdministrador/areas/editar-area/editar-area.component';
 import { EditarEmpleadoComponent } from './vistasAdministrador/empleados/editar-empleado/editar-empleado.component';
+import { CrearAnuncioComponent } from './vistasAdministrador/anuncios/crear-anuncio/crear-anuncio.component';
+import { EditarAnuncioComponent } from './vistasAdministrador/anuncios/editar-anuncio/editar-anuncio.component';
 
 
 const routes: Routes = [
@@ -33,11 +35,13 @@ const routes: Routes = [
   {path: 'administrador/editar-empleado', component: EditarEmpleadoComponent,canActivate: [AdminGuard]},
   {path: 'administrador/clientes', component: ClientesComponent,canActivate: [AdminGuard]},
   {path: 'administrador/anuncios', component: AnunciosComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/crear-anuncio', component: CrearAnuncioComponent,canActivate: [AdminGuard]},
+  {path: 'administrador/editar-anuncio', component: EditarAnuncioComponent,canActivate: [AdminGuard]},
   {path: 'administrador/comentarios', component: ComentariosComponent,canActivate: [AdminGuard]},
 
   // path para lo de rececpion
   {path: 'generalRecepcion',
-  loadChildren: () => import('./vistasRecepcion/recepcion-modulo/recepcion-modulo.module').then(m => m.RecepcionModuloModule), /*canActivate: [FinanzasGuard]*/},
+  loadChildren: () => import('./vistasRecepcion/recepcion-modulo/recepcion-modulo.module').then(m => m.RecepcionModuloModule), canActivate: [FinanzasGuard]},
   { path: "**", redirectTo: "inicio"}
 
 ];

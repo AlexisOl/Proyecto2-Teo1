@@ -3,7 +3,6 @@ export class Anuncio {
     titulo:string;
     descripcion:string;
     fechaPublicacion:number;
-    capacidad:number;
     urlImagen:string;
   }
   

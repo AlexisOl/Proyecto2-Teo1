@@ -239,14 +239,15 @@ function crearTipoDeArea($bd,$nombre){
 }
 
 
-function crearAnuncio($bd,$titulo,$descripcion,$fechaInicio,$fechaFin){
+function crearAnuncio($bd,$titulo,$descripcion,$fechaPublicacion,$urlImagen){
+
     $tabla = 'anuncio';
-    $sql = "INSERT INTO $tabla (titulo,descripcion,fechaInicio,fechaFin) VALUES (:titulo,:descripcion,:fechaInicio,:fechaFin)";
+    $sql = "INSERT INTO $tabla (titulo,descripcion,fechaPublicacion,urlImagen) VALUES (:titulo,:descripcion,:fechaPublicacion,:urlImagen)";
     $stmt = $bd->prepare($sql);
     $stmt->bindParam(':titulo', $titulo, PDO::PARAM_STR);
     $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
-    $stmt->bindParam(':fechaInicio', $fechaInicio, PDO::PARAM_STR);
-    $stmt->bindParam(':fechaFin', $fechaFin, PDO::PARAM_STR);
+    $stmt->bindParam(':fechaPublicacion', $fechaPublicacion, PDO::PARAM_STR);
+    $stmt->bindParam(':urlImagen', $urlImagen, PDO::PARAM_STR);
         
     $exito = $stmt->execute();
 
@@ -278,6 +279,80 @@ function obtenerAnuncios($bd){
     
 }
 
+function actualizarAnuncio($bd,$titulo,$descripcion,$id){
+
+    try {
+        $tabla = 'anuncio';
+        $sql = "UPDATE $tabla SET titulo = :titulo, descripcion = :descripcion            
+                WHERE idAnuncio = :id";
+        
+        $stmt = $bd->prepare($sql);
+        
+        $stmt->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+        $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            
+        $exito = $stmt->execute();
+        
+        if ($exito) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $th) {
+        return false;
+    }
+
+    
+}
+
+function eliminarAnuncio($bd,$id){
+
+    try {
+        $tabla = 'anuncio';
+        $sql = "DELETE FROM $tabla WHERE idAnuncio = :id";
+        
+        $stmt = $bd->prepare($sql);
+        
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            
+        $exito = $stmt->execute();
+        
+        if ($exito) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $th) {
+        return false;
+    }
+
+    
+}
+
+
+
+function obtenerAnuncioPorId($bd,$id){
+    
+    $tabla = 'anuncio';
+    $sql = "SELECT * FROM $tabla WHERE idAnuncio = :id";
+    
+    $stmt = $bd->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_OBJ);
+    
+    // Verificamos si se encontró algún resultado
+    if ($result) {
+        $anuncio = new Anuncio($result->idAnuncio,$result->titulo, $result->descripcion,$result->fechaPublicacion,$result->urlImagen);
+        return $anuncio;
+    } else {
+        // No se encontró ningún resultado con ese ID
+        return null;
+    }
+  
+}
+
 function obtenerTiposAreaAdmin($bd){
     
     $tabla = 'tipoArea';
@@ -299,6 +374,7 @@ function obtenerTiposAreaAdmin($bd){
     
 
 }
+
 
 function obtenerAreaPorId($bd,$id){
     

@@ -72,6 +72,14 @@ public obtenerAnuncios(): Observable<Anuncio[]> {
       
 }
 
+public obtenerAnuncioId(id:any): Observable<Anuncio> {
+
+  const params = new HttpParams().set('id', id);
+
+  return this.http.get<Anuncio>(`${baseURL}obtener-anuncio-id-admin`, {params} );
+      
+}
+
         /** VALIDACIONES */
 
 public validarUsuarioUnico(usuario:any): Observable<boolean> {
@@ -118,6 +126,12 @@ public crearArea(area:any):Observable<any>{
 
 }
 
+public crearAnuncio(anuncio:any):Observable<any>{
+
+  return this.http.post<any>(`${baseURL2}?crear-anuncio=1`,anuncio);
+
+}
+
           /** ACTUALIZACIONES */
 
 public actualizarArea(area:any):Observable<any>{
@@ -151,6 +165,18 @@ public actualizarContrasenia(contrasenia:any,id:any):Observable<any>{
   }
  
   return this.http.post<any>(`${baseURL2}?actualizar-contrasenia-empleado-admin=1`,data);
+
+}
+
+public actualizarAnuncio(anuncio:any):Observable<any>{
+ 
+  return this.http.post<any>(`${baseURL2}?actualizar-anuncio-admin=1`,anuncio);
+
+}
+
+public eliminarAnuncio(id:any):Observable<any>{
+ 
+  return this.http.post<any>(`${baseURL2}?eliminar-anuncio-admin=1`,id);
 
 }
 

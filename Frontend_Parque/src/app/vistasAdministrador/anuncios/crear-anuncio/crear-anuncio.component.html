@@ -1,1 +1,50 @@
-<p>crear-anuncio works!</p>
+<app-header-admin></app-header-admin>
+
+
+<div class="container mt-5 mb-5">
+  
+  <form class="form-container" #f = "ngForm" >
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title class="text-center">Crear anuncio</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <hr />
+
+        <div class="row">
+          <div class="col-md-12">
+            <label [for]="titulo" class="mt-5 d-flex ">
+              Titulo del anuncio
+            </label>
+            <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="Ingresa el titulo"
+            name="nombre"
+            [(ngModel)]="titulo"
+          />
+          </div>
+          <div class="row mt-4">
+            <label [for]="descripcion" class="d-flex mb-2">
+              Descripción
+            </label>
+            <mat-form-field class="example-full-width">
+              <mat-label>Ingresa la descripción del anuncio</mat-label>
+              <textarea matInput [(ngModel)]="descripcion" [ngModelOptions]="{standalone: true}"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="row">
+          <div class="col-md-6 mt-4">
+            <button type="button" class="btn btn-success" (click)="crearAnuncio()">Crear</button>
+      </div>
+
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>
