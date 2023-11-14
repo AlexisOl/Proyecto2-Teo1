@@ -174,10 +174,8 @@ public actualizarAnuncio(anuncio:any):Observable<any>{
 
 }
 
-public eliminarAnuncio(id:any):Observable<any>{
- 
-  return this.http.post<any>(`${baseURL2}?eliminar-anuncio-admin=1`,id);
-
+public eliminarAnuncio(id: any): Observable<any> {
+  return this.http.delete<any>(`${baseURL2}?idAnuncio=${id}`);
 }
 
 }

@@ -386,6 +386,18 @@ function actualizarAnuncioAdmin(){
 
 function eliminarAnuncioAdmin(){
 
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    $id = $_GET['idAnuncio'];
+
+    // Invocar a la función de consulta SQL
+    $result = eliminarAnuncio($bd, $id);
+
+    // Retornar lo encontrado
+    echo json_encode($result);
+
+
 }
 
 ?>

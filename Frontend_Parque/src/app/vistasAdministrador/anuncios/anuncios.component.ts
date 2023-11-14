@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Anuncio } from 'src/app/models/anuncio';
 import { AdministradorService } from 'src/app/services/administrador/administrador.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-anuncios',
@@ -37,8 +38,22 @@ export class AnunciosComponent {
     this.routes.navigate(['administrador/editar-anuncio'],id);
   }
 
-  public eliminarAnuncio(){
+  public eliminarAnuncio(idAnuncio:any){
+    const id = idAnuncio;
+    this.adminstradorService.eliminarAnuncio(id).subscribe(confirmacion=>{
+      if(confirmacion){
+        
+        Swal.fire({
+          title: 'Se eliminó el anuncio correctamente',
+          icon: 'success'
+        }).then(() => {
+          window.location.reload();
+        });
 
+      }else{
+        Swal.fire({title:'No pudo eliminarse el anuncio',icon:'error'});
+      }
+    });
   }
 
 

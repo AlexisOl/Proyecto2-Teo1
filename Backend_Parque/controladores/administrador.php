@@ -262,21 +262,20 @@ function obtenerAnuncios($bd){
     
     $tabla = 'anuncio';
 
-    $sql = "SELECT * FROM $tabla";
+    $sql = "SELECT * FROM $tabla ORDER BY fechaPublicacion DESC";
     
     $stmt = $bd->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-
+    
     $anuncios = array();   
-
+    
     foreach ($result as $row) {
-        $anuncio = new Anuncio($row->idAnuncio,$row->titulo, $row->descripcion,$row->fechaPublicacion,$row->urlImagen);
+        $anuncio = new Anuncio($row->idAnuncio, $row->titulo, $row->descripcion, $row->fechaPublicacion, $row->urlImagen);
         $anuncios[] = $anuncio;
     }
-
-    return $anuncios;
     
+    return $anuncios;
 }
 
 function actualizarAnuncio($bd,$titulo,$descripcion,$id){

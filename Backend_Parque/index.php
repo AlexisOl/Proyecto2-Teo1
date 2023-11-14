@@ -314,3 +314,8 @@ if ($_GET['action'] === 'obtener-anuncio-id-admin' && $_SERVER["REQUEST_METHOD"]
 
     obtenerAnuncioIdAdmin();
 }
+
+if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
+
+    eliminarAnuncioAdmin();
+}
