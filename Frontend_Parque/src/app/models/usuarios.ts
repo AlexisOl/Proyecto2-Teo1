@@ -1,5 +1,5 @@
 export class usuarios {
-  id!: number| null;
+  idEmpleado!: number| null;
   nombre!: string;
   usuario!: string;
   rol!: number;

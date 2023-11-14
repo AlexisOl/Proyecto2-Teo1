@@ -28,6 +28,11 @@ export class EmpleadosComponent {
     this.router.navigate(['administrador/crear-empleado']);
   }
 
+  editarEmpleado(id:any){
+    var id:any = id;
+    this.router.navigate(['administrador/editar-empleado'],id);
+  }
+
 }
 
 

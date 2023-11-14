@@ -20,9 +20,14 @@
             class="form-control mt-2"
             placeholder="Ingresa el nombre del área"
             name="nombre"
-            [(ngModel)]="area.nombre"
+            [(ngModel)]="nombreNuevo"
             value={{area.nombre}}
           />
+
+          <div>
+            <button class="btn btn-success mt-2" (click)="cambiarNombre()">Editar nombre</button>
+          </div>
+
           </div>
           <div class="col-md-6">
             <label [for]="area.capacidad" class="mt-5 d-flex">
@@ -114,8 +119,8 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="row">
-          <div class="col-md-6">
-            <button type="button" class="btn btn-success"  >Registrar</button>
+          <div class="col-md-12">
+            <button type="button" class="btn btn-success"  (click)="actualizarArea()" >Editar información</button>
       </div>
 
         </div>

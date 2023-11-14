@@ -40,6 +40,7 @@ import { EditarAreaComponent } from './vistasAdministrador/areas/editar-area/edi
 import { ClientesComponent } from './vistasAdministrador/clientes/clientes.component';
 import { ComentariosComponent } from './vistasAdministrador/comentarios/comentarios.component';
 import { PaginaPrincipalAdminstradorComponent } from './vistasAdministrador/pagina-principal-adminstrador/pagina-principal-adminstrador.component';
+import { AnunciosClientesComponent } from './vistaGeneral/vista-inicial/anuncios-clientes/anuncios-clientes.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { PaginaPrincipalAdminstradorComponent } from './vistasAdministrador/pagi
     EditarEmpleadoComponent,
     EditarAreaComponent,
     ClientesComponent,
-    PaginaPrincipalAdminstradorComponent
+    PaginaPrincipalAdminstradorComponent,
+    AnunciosClientesComponent
   ],
   imports: [
     BrowserModule,

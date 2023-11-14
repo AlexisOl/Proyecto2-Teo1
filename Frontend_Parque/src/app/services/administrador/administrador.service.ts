@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Anuncio } from 'src/app/models/anuncio';
 import { Area } from 'src/app/models/area';
 import { clientes } from 'src/app/models/clientes';
 import { Rol } from 'src/app/models/rol';
@@ -57,6 +58,20 @@ public obtenerAreaId(id:any): Observable<Area> {
       
 }
 
+public obtenerEmpleadoId(id:any): Observable<usuarios> {
+
+  const params = new HttpParams().set('id', id);
+
+  return this.http.get<usuarios>(`${baseURL}obtener-empleado-id-admin`, {params} );
+      
+}
+
+public obtenerAnuncios(): Observable<Anuncio[]> {
+
+  return this.http.get<Anuncio[]>(`${baseURL}obtener-anuncios`);
+      
+}
+
         /** VALIDACIONES */
 
 public validarUsuarioUnico(usuario:any): Observable<boolean> {
@@ -100,6 +115,25 @@ public crearTipoArea(nombre:any):Observable<boolean>{
 public crearArea(area:any):Observable<any>{
 
   return this.http.post<any>(`${baseURL2}?crear-area=1`,area);
+
+}
+
+          /** ACTUALIZACIONES */
+
+public actualizarArea(area:any):Observable<any>{
+
+  return this.http.post<any>(`${baseURL2}?actualizar-area=1`,area);
+
+}
+
+public actualizarNombre(nombre:any,id:any):Observable<any>{
+
+  let data = {
+    nombre:nombre,
+    id: id
+  }
+
+  return this.http.post<any>(`${baseURL2}?actualizar-nombre-area=1`,data);
 
 }
 
