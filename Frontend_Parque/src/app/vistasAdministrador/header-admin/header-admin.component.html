@@ -18,7 +18,7 @@
     <button  mat-button
     (click)="irClientes()"
     >
-      <span>Clientes</span>
+    <span>Clientes</span>
     </button>
     <span class="example-spacer"></span>
   
@@ -29,12 +29,7 @@
     </button>
     <span class="example-spacer"></span>
 
-    <button  mat-button
-    (click)="irComentarios()"
-      >
-      <span>Comentarios</span>
-    </button>
-    <span class="example-spacer"></span>
+
     <button mat-button [matMenuTriggerFor]="fileMenu">{{loginService.getNombreUsuario()}}</button>
     <mat-menu #fileMenu="matMenu">
       <button  mat-menu-item (click)="cerrarSesion()">Cerrar Sesion</button>
