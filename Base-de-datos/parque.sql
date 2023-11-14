@@ -201,23 +201,25 @@ INSERT INTO  tipoArea( nombre ) VALUES
 ('Salon');
 
 INSERT INTO area(nombre, tipoArea, precio, capacidad, horaInicio, horaFin, descripcion) values
-('Amefin',1,0,75,'8:00:00','21:00:00','Restaurante dentro de las instalaciones'),
-('Sabores en Armonía',1,0,45,'8:00:00','20:00:00','Restaurante dentro de las instalaciones'),
-('La Mesa Real',1,0,75,'8:00:00','20:00:00','Restaurante dentro de las instalaciones'),
-('Aventura Culinaria',1,0,75,'8:00:00','21:00:00','Restaurante dentro de las instalaciones'),
+('Amefin',1,5,75,'8:00:00','21:00:00','Restaurante dentro de las instalaciones'),
+('Sabores en Armonía',1,5,45,'8:00:00','20:00:00','Restaurante dentro de las instalaciones'),
+('La Mesa Real',1,5,75,'8:00:00','20:00:00','Restaurante dentro de las instalaciones'),
+('Aventura Culinaria',1,7,75,'8:00:00','21:00:00','Restaurante dentro de las instalaciones'),
 ('Cancha sintetica Gol',2,100,22,'8:00:00','20:00:00','Cancha sintetica para futbol 11'),
-('Piscina Deluxe',2,550,10,'8:00:00','20:30:00','Piscina aclimatizada privada'),
-('Piscina Splash',2,15,35,'8:00:00','19:30:00','Piscina para todo publico para disfrutar en familia y amigos'),
+('Piscina Deluxe',2,95,10,'8:00:00','20:30:00','Piscina aclimatizada privada'),
+('Piscina Splash',2,1,35,'8:00:00','19:30:00','Piscina para todo publico para disfrutar en familia y amigos'),
 ('Area de juegos Refugio',2,0,45,'8:00:00','20:30:00','Area de juegos al aire libre para niños y adultos'),
-('Rincón Bohemio',3,8500,250,'8:00:00','21:00:00','Salon para eventos especiales La elegancia se encuentra en cada detalle, desde la iluminación ambiental hasta la disposición de los muebles. Creamos un ambiente sofisticado que se adapta a la ocasión y resalta la belleza de cada evento.'),
-('Gala Brillante',3,3500,170,'8:00:00','21:00:00','Equipado con las últimas tecnologías audiovisuales, nuestro salón es el escenario perfecto para presentaciones impactantes y experiencias multimedia inolvidables.'),
-('Salón del Encanto',3,2200,125,'8:00:00','21:00:00','La elegancia se encuentra en cada detalle, desde la iluminación ambiental hasta la disposición de los muebles. Creamos un ambiente sofisticado que se adapta a la ocasión y resalta la belleza de cada evento.'),
-('La Cúpula',3,1200,100,'8:00:00','21:00:00',' Nuestro salón ha sido meticulosamente diseñado para proporcionar un ambiente único y versátil. Ya sea una boda íntima, una celebración corporativa o cualquier ocasión especial, aquí encontrarás el espacio perfecto.'),
-('De los altos',3,1500,110,'8:00:00','21:00:00','Desde la primera consulta hasta el último brindis, nuestro equipo experimentado estará a tu disposición para asegurar que cada detalle refleje tu visión. Nos enorgullece ofrecer un enfoque personalizado y flexible para satisfacer todas tus necesidades.'),
-('Sashimi',3,3510,185,'8:00:00','21:00:00','Desde la entrada hasta cada rincón del salón, nuestra arquitectura refleja la simplicidad y la serenidad del diseño japonés. La decoración minimalista y los elementos naturales crean un ambiente zen que eleva la experiencia de cualquier evento.');
+('Rincón Bohemio',3,5,250,'8:00:00','21:00:00','Salon para eventos especiales La elegancia se encuentra en cada detalle, desde la iluminación ambiental hasta la disposición de los muebles. Creamos un ambiente sofisticado que se adapta a la ocasión y resalta la belleza de cada evento.'),
+('Gala Brillante',3,7,170,'8:00:00','21:00:00','Equipado con las últimas tecnologías audiovisuales, nuestro salón es el escenario perfecto para presentaciones impactantes y experiencias multimedia inolvidables.'),
+('Salón del Encanto',3,4,125,'8:00:00','21:00:00','La elegancia se encuentra en cada detalle, desde la iluminación ambiental hasta la disposición de los muebles. Creamos un ambiente sofisticado que se adapta a la ocasión y resalta la belleza de cada evento.'),
+('La Cúpula',3,4,100,'8:00:00','21:00:00',' Nuestro salón ha sido meticulosamente diseñado para proporcionar un ambiente único y versátil. Ya sea una boda íntima, una celebración corporativa o cualquier ocasión especial, aquí encontrarás el espacio perfecto.'),
+('De los altos',3,2,110,'8:00:00','21:00:00','Desde la primera consulta hasta el último brindis, nuestro equipo experimentado estará a tu disposición para asegurar que cada detalle refleje tu visión. Nos enorgullece ofrecer un enfoque personalizado y flexible para satisfacer todas tus necesidades.'),
+('Sashimi',3,5,185,'8:00:00','21:00:00','Desde la entrada hasta cada rincón del salón, nuestra arquitectura refleja la simplicidad y la serenidad del diseño japonés. La decoración minimalista y los elementos naturales crean un ambiente zen que eleva la experiencia de cualquier evento.');
 
 INSERT INTO anuncio (titulo, descripcion, fechaPublicacion,urlImagen) values
+('Gimnasio','Proximamente contaremos con Gimnasio', '2023-11-13','pendiente'),
+('Nueva área de picnic','Disfruta próximamente de nuestra nueva área de picnic', '2023-11-13','pendiente'),
 ('Nueva cancha sintetica','Disfruta de nuestra nueva cancha sintetica', '2023-11-09','pendiente'),
 ('Salón para graduaciones','Salones disponibles para las graduaciones de la época', '2023-11-09','pendiente'),
-('Nueva piscina privada','Disfruta de nuestra nueva piscina privada', '2023-11-09','pendiente'),
+('Nueva piscina privada','Disfruta de nuestra nueva piscina privada', '2023-11-08','pendiente'),
 ('Nuevos restaurantes','Visita nuestras instalaciones y prueba la comida de nuestros restaurantes', '2023-11-09','pendiente');
