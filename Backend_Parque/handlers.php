@@ -214,7 +214,7 @@ function crearTipoAreaAdmin(){
 }
 
 
-function crearAnuncio(){
+function crearAnuncioAdmin(){
 
     //conexion
      $bd = include_once "conexionDB.php";
@@ -228,12 +228,135 @@ function crearAnuncio(){
      $fechaFin = $data['fechaFin'];
 
      // Invocar a la función de consulta SQL
-     $result = crearAnuncioAdmin($bd,$titulo,$descripcion,$fechaInicio,$fechaFin);
+     $result = crearAnuncio($bd,$titulo,$descripcion,$fechaInicio,$fechaFin);
  
      //retornar lo hallado
      echo json_encode($result);
    
 }
 
+function obtenerAnunciosAdmin() {
+    
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    // Invocar a la función de consulta SQL
+    $result = obtenerAnuncios($bd);
+    //retornar lo hallado
+    echo json_encode($result);
+
+}
+
+function actualizarAreaAdmin(){
+    
+    //conexion
+    $bd = include_once "conexionDB.php";
+     
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    $id = $data['idArea'];
+    $tipoArea = $data['tipoArea'];
+    $nombre = $data['nombre'];
+    $precio = $data['precio'];
+    $capacidad = $data['capacidad'];
+    $horaInicio = $data['horaInicio'];
+    $horaFin = $data['horaFin'];
+    $descripcion = $data['descripcion'];
+
+    // Invocar a la función de consulta SQL
+    $result = actualizarArea($bd,$tipoArea,$nombre,$precio,$capacidad,$horaInicio,$horaFin,$descripcion,$id);
+  
+    //retornar lo hallado
+    echo json_encode(["success" => $result]);
+
+}
+
+function actualizarNombreAreaAdmin(){
+
+    $bd = include_once "conexionDB.php";
+     
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    $id = $data['id'];
+    $nombre = $data['nombre'];
+    
+    // Invocar a la función de consulta SQL
+    $result = actualizarNombreArea($bd,$nombre,$id);
+  
+    //retornar lo hallado
+    echo json_encode(["success" => $result]);
+
+}
+
+function obtenerEmpleadoIdAdmin(){
+    
+    //conexion
+    $bd = include_once "conexionDB.php";
+    
+    $id = $_GET['id'];
+
+    // Invocar a la función de consulta SQL
+    $result = obtenerEmpleadoPorId($bd,$id);
+    //retornar lo hallado
+    echo json_encode($result);
+
+}
+
+function actualizarEmpleadoAdmin(){
+
+    //conexion
+    $bd = include_once "conexionDB.php";
+
+    //Decodificar si es necesario
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    //obtener id
+    $id = $data['id'];
+
+    //obtener nombre
+    $nombre = $data['nombre'];
+
+    //obtener rol
+    $rol = $data['rol'];
+  
+    // Invocar a la función de consulta SQL
+
+    $result = actualizarEmpleado($bd, $nombre, $rol, $id);
+    //retornar lo hallado
+    
+    echo json_encode(["success" => $result]);
+
+}
+
+function actualizarContraseniaAdmin(){
+    
+        //conexion
+        $bd = include_once "conexionDB.php";
+
+        //Decodificar si es necesario
+        $data = json_decode(file_get_contents("php://input"), true);
+    
+        //obtener id
+        $id = $data['id'];
+    
+        //obtener nombre
+        $contrasenia = $data['contrasenia'];
+       
+        $result = actualizarContrasenia($bd, $contrasenia, $id);
+        //retornar lo hallado
+        
+        echo json_encode(["success" => $result]);
+
+}
+
+function obtenerAnuncioIdAdmin(){
+    
+
+}
+
+function actualizarAnuncioAdmin(){
+    
+
+}
 
 ?>

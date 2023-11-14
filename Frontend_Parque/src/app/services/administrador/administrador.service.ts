@@ -137,5 +137,21 @@ public actualizarNombre(nombre:any,id:any):Observable<any>{
 
 }
 
+public actualizarEmpleado(empleado:any):Observable<any>{
+ 
+  return this.http.post<any>(`${baseURL2}?actualizar-empleado-admin=1`,empleado);
+
+}
+
+public actualizarContrasenia(contrasenia:any,id:any):Observable<any>{
+
+  let data = {
+    contrasenia:contrasenia,
+    id: id
+  }
+ 
+  return this.http.post<any>(`${baseURL2}?actualizar-contrasenia-empleado-admin=1`,data);
+
+}
 
 }

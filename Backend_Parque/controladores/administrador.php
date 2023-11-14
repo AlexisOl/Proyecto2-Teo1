@@ -5,6 +5,7 @@
     require './models/Area.php';
     require './models/Rol.php';
     require './models/TipoArea.php';
+    require './models/Anuncio.php';
 
 function validarCredenciales($bd, $usuario, $contrasenia) {
 
@@ -238,7 +239,7 @@ function crearTipoDeArea($bd,$nombre){
 }
 
 
-function crearAnuncioAdmin($bd,$titulo,$descripcion,$fechaInicio,$fechaFin){
+function crearAnuncio($bd,$titulo,$descripcion,$fechaInicio,$fechaFin){
     $tabla = 'anuncio';
     $sql = "INSERT INTO $tabla (titulo,descripcion,fechaInicio,fechaFin) VALUES (:titulo,:descripcion,:fechaInicio,:fechaFin)";
     $stmt = $bd->prepare($sql);
@@ -259,8 +260,8 @@ function crearAnuncioAdmin($bd,$titulo,$descripcion,$fechaInicio,$fechaFin){
 function obtenerAnuncios($bd){
     
     $tabla = 'anuncio';
-    $sql = "SELECT titulo, descripcion, fechaInicio, fechaFin ,
-    FROM $tabla";
+
+    $sql = "SELECT * FROM $tabla";
     
     $stmt = $bd->prepare($sql);
     $stmt->execute();
@@ -269,7 +270,7 @@ function obtenerAnuncios($bd){
     $anuncios = array();   
 
     foreach ($result as $row) {
-        $anuncio = new Anuncio($row->titulo, $row->descripcion,$row->fechaInicio,$row->fechaFin);
+        $anuncio = new Anuncio($row->idAnuncio,$row->titulo, $row->descripcion,$row->fechaPublicacion,$row->urlImagen);
         $anuncios[] = $anuncio;
     }
 
@@ -317,6 +318,141 @@ function obtenerAreaPorId($bd,$id){
         // No se encontró ningún resultado con ese ID
         return null;
     }
-    
+  
+}
 
+
+function actualizarArea($bd,$tipoArea,$nombre,$precio,$capacidad,$horaInicio,$horaFin,$descripcion,$id){
+
+    try {
+        $tabla = 'area';
+        $sql = "UPDATE $tabla SET tipoArea = :tipoArea, precio = :precio,
+                capacidad = :capacidad, horaInicio = :horaInicio, horaFin = :horaFin, descripcion = :descripcion
+                WHERE idArea = :id";
+        
+        $stmt = $bd->prepare($sql);
+        
+        $stmt->bindParam(':tipoArea', $tipoArea, PDO::PARAM_INT);
+        $stmt->bindParam(':precio', $precio, PDO::PARAM_INT);
+        $stmt->bindParam(':capacidad', $capacidad, PDO::PARAM_INT);
+        $stmt->bindParam(':horaInicio', $horaInicio, PDO::PARAM_STR);
+        $stmt->bindParam(':horaFin', $horaFin, PDO::PARAM_STR);
+        $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    
+        
+        $exito = $stmt->execute();
+        
+        if ($exito) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $th) {
+        return false;
+    }
+
+    
+}
+
+
+function actualizarNombreArea($bd,$nombre,$id){
+
+    try {
+        $tabla = 'area';
+        $sql = "UPDATE $tabla SET nombre = :nombre
+                WHERE idArea = :id";
+        
+        $stmt = $bd->prepare($sql);
+        
+        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            
+        $exito = $stmt->execute();
+        
+        if ($exito) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $th) {
+        return false;
+    }
+
+    
+}
+
+function obtenerEmpleadoPorId($bd,$id){
+    
+    $tabla = 'empleado';
+    $sql = "SELECT * FROM $tabla WHERE idEmpleado = :id";
+    
+    $stmt = $bd->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_OBJ);
+    
+    // Verificamos si se encontró algún resultado
+    if ($result) {
+        $empleado = new Empleado($result->idEmpleado, $result->nombre, $result->usuario, $result->rol);
+        return $empleado;
+    } else {
+        // No se encontró ningún resultado con ese ID
+        return null;
+    }
+  
+}
+
+
+function actualizarEmpleado($bd,$nombre,$rol,$id){
+
+    try {
+        $tabla = 'empleado';
+        $sql = "UPDATE $tabla SET nombre = :nombre, rol = :rol
+                WHERE idEmpleado = :id";
+        
+        $stmt = $bd->prepare($sql);
+        
+        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':rol', $rol, PDO::PARAM_INT);
+            
+        $exito = $stmt->execute();
+        
+        if ($exito) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $th) {
+        return false;
+    }
+
+    
+}
+
+function actualizarContrasenia($bd,$contrasenia,$id){
+
+    try {
+        $tabla = 'empleado';
+        $sql = "UPDATE $tabla SET contrasenia = AES_ENCRYPT(:contrasenia, 'teo1_2023')
+                WHERE idEmpleado = :id";
+        
+        $stmt = $bd->prepare($sql);
+        
+        $stmt->bindParam(':contrasenia', $contrasenia, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            
+        $exito = $stmt->execute();
+        
+        if ($exito) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $th) {
+        return false;
+    }
+
+    
 }

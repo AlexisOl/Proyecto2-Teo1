@@ -102,6 +102,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         crearAreaAdmin();
 
+    } else if (isset($_GET['actualizar-area'])) {
+        
+        actualizarAreaAdmin();
+    } else if (isset($_GET['actualizar-nombre-area'])) {
+
+        actualizarNombreAreaAdmin();
+
+    } else if (isset($_GET['actualizar-empleado-admin'])) {
+
+        actualizarEmpleadoAdmin();
+
+    } else if (isset($_GET['actualizar-contrasenia-empleado-admin'])) {
+
+        actualizarContraseniaAdmin();
+
+    } else if (isset($_GET['actualizar-anuncio-admin'])) {
+
+        actualizarAnuncioAdmin();
+
+    } else if (isset($_GET['crear-anuncio'])) {
+
+        crearAnuncioAdmin();
+
     } else {
         $conexion = include_once "conexionDB.php";
         $data = json_decode(file_get_contents("php://input"), true);
@@ -275,4 +298,14 @@ if ($_GET['action'] === 'validar-nombre-area' && $_SERVER["REQUEST_METHOD"] === 
 if ($_GET['action'] === 'validar-nombre-tipo-area' && $_SERVER["REQUEST_METHOD"] === "GET") {
 
     validarNombreTipoArea();
+}
+
+if ($_GET['action'] === 'obtener-anuncios' && $_SERVER["REQUEST_METHOD"] === "GET") {
+
+    obtenerAnunciosAdmin();
+}
+
+if ($_GET['action'] === 'obtener-empleado-id-admin' && $_SERVER["REQUEST_METHOD"] === "GET") {
+
+    obtenerEmpleadoIdAdmin();
 }

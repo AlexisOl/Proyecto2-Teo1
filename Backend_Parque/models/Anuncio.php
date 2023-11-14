@@ -5,14 +5,15 @@ class Anuncio {
     public $idAnuncio;
     public $titulo;
     public $descripcion;
-    public $fechaInicio;
-    public $fechaFin;
+    public $fechaPublicacion;
+    public $urlImagen;
     
-    public function __construct($titulo,$descripcion,$fecha_inicio,$fecha_fin) {
+    public function __construct($idAnuncio,$titulo,$descripcion,$fechaPublicacion,$urlImagen) {
+        $this->idAnuncio = $idAnuncio;   
         $this->titulo = $titulo;   
         $this->descripcion = $descripcion;   
-        $this->fechaInicio = $fecha_inicio;   
-        $this->fechaFin = $fecha_fin; 
+        $this->fechaPublicacion = $fechaPublicacion;   
+        $this->urlImagen = $urlImagen; 
     }
 
 
@@ -29,19 +30,13 @@ class Anuncio {
     }
 
     public function obtenerFechaInicio() {
-        return $this->fechaInicio;
+        return $this->fechaPublicacion;
     }
 
-    public function obtenerFechaFin() {
-        return $this->fechaFin;
+    public function obtenerUrl() {
+        return $this->urlImagen;
     }
 
 }
 
 ?>
-
-
-
-
-
-
