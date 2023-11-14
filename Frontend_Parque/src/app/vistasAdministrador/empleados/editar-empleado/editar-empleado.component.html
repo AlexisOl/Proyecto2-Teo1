@@ -57,7 +57,7 @@
           </div>
           <div class="col-md-6 mt-4">
 
-            <label [for]="empleado.contrasenia" class="d-flex">
+            <label [for]="nuevaContrasenia" class="d-flex">
               Contraseña
             </label>
             <input
@@ -65,11 +65,11 @@
               class="form-control mt-2"
               placeholder="Ingresa la contraseña"
               name="contrasenia"
-              [(ngModel)]="empleado.contrasenia"
+              [(ngModel)]="nuevaContrasenia"
               
             />
             <div>
-                <button class="btn btn-success mt-3" >Actualizar contraseña</button>
+                <button class="btn btn-success mt-3" (click)="actualizarContrasenia()">Actualizar contraseña</button>
               </div>
           </div>
           
@@ -79,7 +79,7 @@
       <mat-card-actions>
         <div class="row">
           <div class="col-md-12">
-            <button type="button" class="btn btn-success" >Actualizar información</button>
+            <button type="button" class="btn btn-success" (click)="actualizarEmpleado()">Actualizar información</button>
       </div>
 
         </div>

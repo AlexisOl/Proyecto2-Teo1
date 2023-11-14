@@ -311,7 +311,7 @@ function actualizarEmpleadoAdmin(){
     $data = json_decode(file_get_contents("php://input"), true);
 
     //obtener id
-    $id = $data['id'];
+    $id = $data['idEmpleado'];
 
     //obtener nombre
     $nombre = $data['nombre'];
@@ -337,7 +337,7 @@ function actualizarContraseniaAdmin(){
         $data = json_decode(file_get_contents("php://input"), true);
     
         //obtener id
-        $id = $data['id'];
+        $id = $data['idEmpleado'];
     
         //obtener nombre
         $contrasenia = $data['contrasenia'];

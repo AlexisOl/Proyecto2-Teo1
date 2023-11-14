@@ -20,7 +20,7 @@
               <td>{{empleado.nombre}}</td>
               <td>{{empleado.usuario}}</td>
               <td *ngIf="empleado.rol==1">Administrador general</td>
-              <td *ngIf="empleado.rol==2">Administrador finanzas</td>
+              <td *ngIf="empleado.rol==2">Recepcionista</td>
               <td *ngIf="empleado.rol==3">Recepcion</td>
               <td class="text-center">
                 <button type="button" class="btn btn-outline-primary btn-sm ms-3" (click)="editarEmpleado(empleado.idEmpleado)">Editar</button>

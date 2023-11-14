@@ -147,7 +147,7 @@ public actualizarContrasenia(contrasenia:any,id:any):Observable<any>{
 
   let data = {
     contrasenia:contrasenia,
-    id: id
+    idEmpleado: id
   }
  
   return this.http.post<any>(`${baseURL2}?actualizar-contrasenia-empleado-admin=1`,data);
