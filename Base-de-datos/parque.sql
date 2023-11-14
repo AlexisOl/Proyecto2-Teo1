@@ -1,5 +1,5 @@
 CREATE DATABASE parque;
-
+-- parque2 prueba
 CREATE USER 'administracionParque'@'localhost' IDENTIFIED BY 'Teori@sistemas1';
 
 GRANT ALL PRIVILEGES ON parque.* TO 'administracionParque'@'localhost' WITH GRANT OPTION;

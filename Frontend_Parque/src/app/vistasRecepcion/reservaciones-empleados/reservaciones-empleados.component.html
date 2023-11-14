@@ -1,2 +1,123 @@
 <app-header-recepcion></app-header-recepcion>
 <!--IDEA DE GENERAR UNA TABLA-->
+
+<div class="container">
+  <form class="form-container" #f = "ngForm">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Informacion</mat-card-title>
+        <mat-card-subtitle>Ingreso de Rersvaciones</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <hr />
+
+        <div class="row">
+          <div class="col-md-6">
+            <label for="nombre" class="mt-5 d-flex justify-content-center">
+              Nit de Cliente
+            </label>
+            <input
+              type="text"
+              class="form-control mt-2"
+              placeholder="Nombre de Empeleado"
+              name="identificador_prodcuto"
+              [(ngModel)]='nit'
+
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="nombre" class="mt-5 d-flex justify-content-center">
+              id de Empelado
+            </label>
+            <input
+              type="text"
+              class="form-control mt-2"
+              placeholder="Password de Empelado"
+              name="password"
+              [(ngModel)]='idEmpleado'
+
+              required
+            />
+          </div>
+        </div>
+      </mat-card-content>
+
+      <!--TABLA DE AREAS SELECCIONADAS-->
+      <h1>Listado de Areas Seleccionadas</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">precio por hora</th>
+            <th scope="col">Fecha de Alquiler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let nuevasAreas of areas; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ nuevasAreas.nombre }}</td>
+            <td>{{ nuevasAreas.precio }}</td>
+            <td>
+              <input
+                type="date"
+                class="form-control mt-2"
+                placeholder="Cantidad de Producto a Vender"
+                name="fechaAlquiler"
+                [(ngModel)]="nuevasAreas.fecha"
+              />
+            </td>
+            <td>
+              <button  mat-raised-button
+              color="accent"
+              (click)="areasRequeridas(nuevasAreas)"
+              >Reservar</button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+      <!--TABLA DE AREAS SELECCIONADAS-->
+      <h1>Listado de Areas Seleccionadas</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Fecha de Alquiler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let nuevasAreas of areasSolicitadas; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ nuevasAreas.idArea }}</td>
+            <td>
+              <input
+                type="date"
+                class="form-control mt-2"
+                placeholder="Cantidad de Producto a Vender"
+                name="fechaAlquiler"
+                [(ngModel)]="nuevasAreas.fecha_reserva"
+              />
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+
+      <!--ELEMENTO FINAL-->
+      <mat-card-actions>
+        <div class="row">
+          <div class="col-md-6">
+            <button mat-raised-button color="primary" (click)="DeterminarValoresAreas()">Solicitar</button>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

@@ -7,6 +7,7 @@ import { areas } from '../models/areas';
 import { facturas } from '../models/facturas';
 import { venta } from '../models/venta';
 import { empleadoFactura } from '../models/ermpleadoFactura';
+import { reservacion } from '../models/reservacion';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class RecepcionServicioService {
   readonly URL ="http://localhost/Backend_Parque/controladores/recepcion.php";
   readonly URL2 ="http://localhost/Backend_Parque/index.php";
   private url = 'http://localhost/Backend_Parque/index.php';
+  private urlNuevo = 'http://localhost/Backend_Parque/index1.php';
 
   constructor(private http: HttpClient) { }
 
@@ -108,6 +110,25 @@ export class RecepcionServicioService {
 
   /// para ver todas las facturas asi como lugares ya no disponibles
   obtenerFacturasGlobales():Observable<venta> {
-    return this.http.get<venta>(this.url+"?verFacturasGlobales=1");
+    return this.http.get<venta>(this.urlNuevo+"?nuevoIngreso=1");
   }
+
+  // metodo para generar reservaciones ESTE QUE SOLO QUEDE POR FECHA
+
+  generarReservacion(reservacion: reservacion):Observable<reservacion>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post<reservacion>("http://localhost/Backend_Parque/index1.php?ingresoReservacion=1",reservacion, httpOptions );
+  }
+
+
+  // metodo para ver las reservaciones
+
+  verReservacionesGlobales():Observable<reservacion>{
+    return this.http.get<reservacion>("http://localhost/Backend_Parque/index1.php?action=verReservaciones");
+  }
+
 }
