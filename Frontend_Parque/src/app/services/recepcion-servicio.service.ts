@@ -131,4 +131,27 @@ export class RecepcionServicioService {
     return this.http.get<reservacion>("http://localhost/Backend_Parque/index1.php?action=verReservaciones");
   }
 
+  //metodo para ver si hay reservaciones ya hechas?
+  yaHayReservaciones(idArea: number, fecha_reserva:Date):Observable<reservacion> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.get<reservacion>("http://localhost/Backend_Parque/index1.php?buscarSiHayReservacion=1&idArea="+idArea+"&fecha_reserva="+fecha_reserva, httpOptions );
+
+  }
+
+
+    //metodo para ver si hay reservaciones ya hechas?
+    yaHayVentas(idArea: number, fechaVenta:Date):Observable<venta> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };
+      return this.http.get<venta>("http://localhost/Backend_Parque/index1.php?buscarSiHayVenta=1&idArea="+idArea+"&fecha="+fechaVenta, httpOptions );
+
+    }
+
 }

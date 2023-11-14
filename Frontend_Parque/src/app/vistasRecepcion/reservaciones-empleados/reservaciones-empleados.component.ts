@@ -11,9 +11,13 @@ import { RecepcionServicioService } from 'src/app/services/recepcion-servicio.se
 })
 export class ReservacionesEmpleadosComponent implements OnInit {
   areasSolicitadas:any=[];
+  areasSolicitadasFinal:any=[];
   areas:any
   idEmpleado:any
   nit:any
+
+  // elementos de ayuda
+  invalidezReservacion:boolean = false;
 
 
   constructor(private rececpcionServicio: RecepcionServicioService){}
@@ -49,8 +53,11 @@ export class ReservacionesEmpleadosComponent implements OnInit {
 
     //ver reservaciones
     DeterminarValoresAreas(){
+      //hacer funcion de cambio de array en caso no sea valido
+    this.areasSolicitadas.filter((area:any) => !area.invalido);
       console.log(this.areasSolicitadas);
-      this.areasSolicitadas.forEach(
+      console.log("nuevo", this.areasSolicitadasFinal);
+      this.areasSolicitadasFinal.forEach(
         (reservacionIndividual:any) => {
           reservacionIndividual.fecha_fin_reserva=reservacionIndividual.fecha_reserva
           this.rececpcionServicio.generarReservacion(reservacionIndividual).subscribe();
@@ -58,6 +65,33 @@ export class ReservacionesEmpleadosComponent implements OnInit {
       )
 
     }
+
+
+ //funcion para ver si se pueden las reservas
+    verValidaciones() {
+      this.areasSolicitadas.forEach((reservacionIndividual: any) => {
+        this.rececpcionServicio.yaHayReservaciones(reservacionIndividual.idArea, reservacionIndividual.fecha_reserva).subscribe(
+          sihay => {
+            console.log(sihay);
+
+            if (!sihay) {
+              // Verificar si el idArea ya está en areasSolicitadasFinal
+              const areaExistente = this.areasSolicitadasFinal.find((area: any) => area.idArea === reservacionIndividual.idArea);
+              if (!areaExistente) {
+                this.areasSolicitadasFinal.push(reservacionIndividual);
+              }
+            } else {
+              this.invalidezReservacion = true;
+              const areaExistente = this.areasSolicitadasFinal.find((area: any) => area.idArea === reservacionIndividual.idArea);
+              if (areaExistente) {
+                this.areasSolicitadasFinal.pop(reservacionIndividual);
+              }
+            }
+          }
+        );
+      });
+    }
+
   ngOnInit() {
     this.verAreas();
   }

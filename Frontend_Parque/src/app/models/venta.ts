@@ -8,5 +8,7 @@ export class venta {
 
   // ELEMENTO AGREGAOD
   fechaVenta!: Date
+  horainicial!: number
+  horafinal!: number
 
 }

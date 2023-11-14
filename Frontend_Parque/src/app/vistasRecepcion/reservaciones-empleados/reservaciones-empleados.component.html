@@ -108,11 +108,50 @@
         </tbody>
       </table>
 
+  <!--ALERTA DE ELEMENTOS-->
+  <div class="container" *ngIf="invalidezReservacion">
+    <p>
+      <ngb-alert [dismissible]="false">
+        <strong>Adevertencia!</strong> Se quitaron las areas que no estan disponibles por fecha.
+      </ngb-alert>
+    </p>
+  </div>
+
+
+<!--TABLA PARA RECAPITULACION-->
+<div class="container">
+  <h1 style="color: aliceblue;">Recapitulacion de Reservaciones</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nit cliente</th>
+      <th scope="col">Id Area</th>
+      <th scope="col">Id Empelado</th>
+      <th scope="col">Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fin of areasSolicitadasFinal; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ fin.nitCliente }}
+      </td>
+      <td>{{ fin.idArea }}</td>
+      <td>{{ fin.idEmpleado }}</td>
+      <td>{{ fin.fecha_reserva }}</td>
+    </tr>
+  </tbody>
+</table>
 
 
       <!--ELEMENTO FINAL-->
       <mat-card-actions>
         <div class="row">
+          <div class="col-md-6">
+            <button mat-raised-button color="accent" (click)="verValidaciones()">ver disponibilidad</button>
+          </div>
           <div class="col-md-6">
             <button mat-raised-button color="primary" (click)="DeterminarValoresAreas()">Solicitar</button>
           </div>

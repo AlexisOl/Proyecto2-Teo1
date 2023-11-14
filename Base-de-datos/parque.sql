@@ -125,6 +125,9 @@ CREATE TABLE venta(
     descripcion TEXT NOT NULL,
     idFactura INT NOT NULL,
     fecha DATE NOT NULL,
+    -- cambio de venta alexis
+    horainicial INT NOT NULL,
+    horafinal INT NOT NULL,
     PRIMARY KEY(idVenta)
 );
 
