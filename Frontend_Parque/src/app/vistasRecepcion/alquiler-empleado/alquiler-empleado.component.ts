@@ -95,10 +95,13 @@ export class AlquilerEmpleadoComponent implements OnInit {
         console.log(verificacion.idArea, verificacion.fecha);
 
         this.empleadoServicio.yaHayVentas(verificacion.idArea, verificacion.fecha).subscribe(
-          (ventasEncontradas) => {
+          (ventasEncontradas:any) => {
             console.log(ventasEncontradas);
 
+
             this.areasParaVerificar = ventasEncontradas
+            this.areasParaVerificar.push(ventasEncontradas);
+
           }
         )
       }
